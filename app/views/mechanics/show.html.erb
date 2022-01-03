@@ -3,3 +3,9 @@
 <% @mechanic.rides.order_thrill_and_open.each do |ride| %>
 <li><%= ride %></li>
 <% end %>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, local: true do |form| %>
+<%= form.label :Add_a_ride_to_workload%>
+<%= form.text_field :ride_id%>
+<%= form.submit "Submit"%>
+<% end %>
