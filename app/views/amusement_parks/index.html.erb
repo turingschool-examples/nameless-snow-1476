@@ -1,0 +1,5 @@
+<h1>All Amusement Parks</h1>
+
+<% @parks.each do |park| %>
+  <%= link_to "#{park.name}", "/park/#{park.id}" %><br>
+<% end %>
