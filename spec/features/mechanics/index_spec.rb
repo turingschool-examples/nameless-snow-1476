@@ -13,4 +13,20 @@ RSpec.describe 'mechanics index page' do
   let!(:mech_ride_1) {RideMechanic.create!(mechanic: mechanic_1, ride: ride_1)}
   let!(:mech_ride_2) {RideMechanic.create!(mechanic: mechanic_1, ride: ride_2)}
   let!(:mech_ride_3) {RideMechanic.create!(mechanic: mechanic_2, ride: ride_3)}
+
+  it 'displays all mechanics names and experience' do 
+    visit "/mechanics"
+
+    expect(page).to have_content("All Mechanics")
+    expect(page).to have_content(mechanic_1.name)
+    expect(page).to have_content(mechanic_1.years_experience)
+    expect(page).to have_content(mechanic_2.name)
+    expect(page).to have_content(mechanic_2.years_experience)
+  end
+
+  it 'displays the average experience of all mechanics' do 
+    visit "/mechanics"
+
+    expect(page).to have_content("Mechanic's Average Experience: 15")
+  end
 end
