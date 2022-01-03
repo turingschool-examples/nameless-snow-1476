@@ -1,11 +1,5 @@
-# As a visitor,
-# When I visit an amusement park’s show page
-# I see the name and price of admissions for that amusement park
-# And I see the names of all the rides that are at that theme park listed in alphabetical order
-# And I see the average thrill rating of this amusement park’s rides
-
-
 require 'rails_helper'
+
 RSpec.describe 'Amusement Park Show Page', type: :feature do
   let!(:six_flags) {AmusementPark.create!(name: "Six Flags", admission_cost: 20)}
 
@@ -31,9 +25,17 @@ RSpec.describe 'Amusement Park Show Page', type: :feature do
 
   it 'displays rides in alphabetical order' do
     visit "/amusement_parks/#{six_flags.id}"
-    
+
     expect("Cyclone").to appear_before("Hot Dog", only_text: true)
     expect("Hot Dog").to appear_before("Log Ride", only_text: true)
     expect("Log Ride").to appear_before("Whirly Dirly", only_text: true)
+  end
+
+  it 'displays the average thrill rating of rides at the park' do
+    visit "/amusement_parks/#{six_flags.id}"
+
+    average_thrill_rating = (splash.thrill_rating + coaster.thrill_rating + hot_dog.thrill_rating + whirl.thrill_rating) / 4
+
+    expect(page).to have_content("Average Thrill Rating: #{average_thrill_rating}")
   end
 end
