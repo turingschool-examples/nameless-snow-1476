@@ -8,7 +8,7 @@ describe 'Mechanic Show' do
     @ride1 = Ride.create(name: 'Ferris Wheel', thrill_rating: 3, open: true, amusement_park: @park)
     @ride2 = Ride.create(name: 'Loop-D-Loop', thrill_rating: 10, open: true, amusement_park: @park)
     @ride3 = Ride.create(name: 'Spin-E-Thing', thrill_rating: 6, open: false, amusement_park: @park)
-    @ride4 = Ride.create(name: 'Round-A-Bout', thrill_rating: 6, open: false, amusement_park: @park)
+    @ride4 = Ride.create(name: 'Round-A-Bout', thrill_rating: 6, open: true, amusement_park: @park)
 
     RideMechanic.create!(mechanic: @mechanic1, ride: @ride1)
     RideMechanic.create!(mechanic: @mechanic1, ride: @ride2)
