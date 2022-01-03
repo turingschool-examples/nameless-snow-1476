@@ -5,4 +5,8 @@ class Mechanic < ApplicationRecord
   def self.average_exp
     average(:years_of_experience).round(2)
   end
+
+  def only_open
+    rides.where('open = true')
+  end
 end
