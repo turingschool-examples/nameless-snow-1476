@@ -12,8 +12,8 @@ RSpec.describe "Amusement Park Show page", type: :feature do
     
     @park2 = AmusementPark.create!(name:"Hershey Park", admission_cost:50)
 
-    @ride5 = @park2.rides.create!(name:"Lightning Racer", thrill_rating:4)
-    @ride6 = @park2.rides.create!(name:"Storm Runner", thrill_rating:6)
+    @ride5 = @park2.rides.create!(name:"Storm Runner", thrill_rating:6)
+    @ride6 = @park2.rides.create!(name:"Lightning Racer", thrill_rating:4)
     @ride7 = @park2.rides.create!(name:"The Great Bear", thrill_rating:8)    
   end
 
@@ -27,14 +27,26 @@ RSpec.describe "Amusement Park Show page", type: :feature do
     expect(page).to_not have_content("Admission: $25.00")
   end
 
-  xit "shows names of all rides at the park in alphabetical order" do
+  it "shows names of all rides at the park in alphabetical order" do
     visit "/amusement_parks/#{@park2.id}"
    
-    expect(page).to have_content
+    expect(page).to have_content("Lightning Racer")
+    expect(page).to have_content("Storm Runner")
+    expect(page).to have_content("The Great Bear")
 
+    expect("Lightning Racer").to appear_before("Storm Runner")
+    expect("Storm Runner").to appear_before("The Great Bear")
+    expect("Lightning Racer").to appear_before("The Great Bear")
+
+    expect(page).to_not have_content("Thunderbolt")
+    expect(page).to_not have_content("Jack Rabbit")
+    expect(page).to_not have_content("Steel Phantom")
   end
 
-  xit "shows average thrill rating of all the rides at the amusement park" do
+  it "shows average thrill rating of all the rides at the amusement park" do
+    visit "/amusement_parks/#{@park2.id}"
+
+    expect(page).to have_content("Average Ride Thrill Rating: 6.0/10")
   end
 
 end

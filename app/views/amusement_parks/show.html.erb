@@ -1,4 +1,11 @@
-<h1>Park Detail Page: <%= @amusement_park.name %>
+<h1>Park Detail Page: <%= @amusement_park.name %></h1>
 <p>Admission: <%= number_to_currency(@amusement_park.admission_cost) %></p>
 
+<p>Rides at <%= @amusement_park.name %>:</p>
+  <ol>
+  <% @amusement_park.alpha_ordered_rides.each do |ride| %>
+    <li><%= ride.name %></li>
+    <% end %>
+  </ol>
 
+<p>Average Ride Thrill Rating: <%= @amusement_park.average_thrill_rating %>/10 </p>
