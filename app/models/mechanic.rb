@@ -1,0 +1,3 @@
+class Mechanic
+
+end
