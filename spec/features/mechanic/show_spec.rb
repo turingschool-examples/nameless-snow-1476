@@ -10,6 +10,7 @@ RSpec.describe 'mechanic show page' do
 
     # I don't yet know how to add rides to a mechanic when rides also belong to park
     @ride1 = @park1.rides.find_or_create_by!(name: 'ride1', thrill_rating: 0, open: true)
+    binding.pry
     @ride2 = @park1.rides.find_or_create_by!(name: 'ride2', thrill_rating: 1, open: false)
 
     @ride3 = @park1.rides.find_or_create_by!(name: 'ride3', thrill_rating: 2, open: false)
