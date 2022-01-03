@@ -4,6 +4,6 @@
 
 <h2>Rides being worked on:</h2>
 
-<% @mechanic.rides.each do |ride| %>
+<% @mechanic.rides.desc_thrill.open?.each do |ride| %>
   <p><%= ride.name %></p>
 <% end %>
