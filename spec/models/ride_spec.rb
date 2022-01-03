@@ -22,5 +22,11 @@ RSpec.describe Ride do
     it 'orders rides alphabetically by name' do
       expect(Ride.alphabetical_order).to eq([coaster, hot_dog, splash])
     end
+
+    it 'calculates average thrill rating' do
+      average_thrill_rating = (splash.thrill_rating + coaster.thrill_rating + hot_dog.thrill_rating) / 3
+
+      expect(Ride.average_thrill_rating).to eq(average_thrill_rating)
+    end
   end
 end
