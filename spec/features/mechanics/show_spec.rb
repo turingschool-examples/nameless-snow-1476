@@ -22,4 +22,16 @@ RSpec.describe 'Mechanics Show Page' do
     expect(page).to have_content(@ride_2.name)
     expect(page).to have_content(@ride_3.name)
   end
+
+  it 'only displays rides that are open' do
+    ride_4 = @six_flags.rides.create!(name: 'The Closed Ride', thrill_rating: 1, open: false)
+    mechanic_ride_4 = @mechanic_1.mechanic_rides.create!(ride_id: ride_4.id)
+
+    visit "/mechanics/#{@mechanic_1.id}"
+
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_2.name)
+    expect(page).to have_content(@ride_3.name)
+    expect(page).to_not have_content(ride_4.name)
+  end
 end

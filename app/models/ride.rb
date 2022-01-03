@@ -5,7 +5,6 @@ class Ride < ApplicationRecord
 
   validates_presence_of :name, presence: true
   validates_presence_of :thrill_rating, presence: true
-  validates_presence_of :open, presence: true
 
   def self.open
     where(open: true)
