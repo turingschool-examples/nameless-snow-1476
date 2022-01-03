@@ -17,8 +17,8 @@ RSpec.describe 'mechanics show page' do
   end
 
   it "lists the age of all mechanics" do
-    mech_1 = create(:mechanic, age: 10)
-    mech_2 = create(:mechanic, age: 12)
+    mech_1 = create(:mechanic, years_experience: 10)
+    mech_2 = create(:mechanic, years_experience: 12)
 
     visit '/mechanics'
 
