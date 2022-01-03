@@ -29,7 +29,7 @@ RSpec.describe 'Mechanic Show Page' do
     expect(page).to have_content(@mechanic_1.years_experience)
     save_and_open_page
   end
-  
+
 ##Commented test out after writing and implementing that visitor will only see the rides that are open
   # scenario 'visitor sees the names of the rides mechanic is working on' do
   #   expect(page).to have_content(@ride_1.name)
@@ -48,5 +48,11 @@ RSpec.describe 'Mechanic Show Page' do
   end
 
   scenario 'visitor sees rides listed by thrill rating in descending order' do
+    expect(@ride_1.name).to appear_before(@ride_2.name)
+    expect(@ride_1.name).to appear_before(@ride_3.name)
+    expect(@ride_2.name).to_not appear_before(@ride_1.name)
+    expect(@ride_2.name).to_not appear_before(@ride_3.name)
+    expect(@ride_3.name).to_not appear_before(@ride_1.name)
+    expect(@ride_3.name).to appear_before(@ride_2.name)
   end
 end
