@@ -43,6 +43,5 @@ RSpec.describe 'amusement park show page' do
     visit "/amusementparks/#{park_1.id}"
 
     expect(page).to have_content("Average Thrill Rating of Rides: 74")
-    save_and_open_page
   end
 end
