@@ -18,11 +18,19 @@ RSpec.describe 'the mechanics show page' do
   end
 
   it 'lists mechanic info and open rides they are working on ordered by thrill rating' do
-  visit "/mechanics/#{@mechanic_1.id}"
+    visit "/mechanics/#{@mechanic_1.id}"
 
-  expect(page).to have_content(@mechanic_1.name)
-  expect(page).to have_content(@mechanic_1.years_experience)
-  expect(page).to have_no_content(@ride_3.name)
-  expect(@ride_2.name).to appear_before(@ride_1.name)
+    expect(page).to have_content(@mechanic_1.name)
+    expect(page).to have_content(@mechanic_1.years_experience)
+    expect(page).to have_no_content(@ride_3.name)
+    expect(@ride_2.name).to appear_before(@ride_1.name)
+  end
+
+  it 'adds ride to mechanic workload' do
+    visit "/mechanics/#{@mechanic_1.id}"
+    fill_in 'id', with: "#{@ride_4.id}"
+    click_on("Add")
+
+    expect(page).to have_content("#{@ride_4.name}")
   end
 end
