@@ -5,7 +5,7 @@ RSpec.describe 'mechanic show page' do
   it "shows their name" do
     mech = create(:mechanic, name: 'Bob')
 
-    visit "/mechanics/#{@mech.id}"
+    visit "/mechanics/#{mech.id}"
 
     expect(page).to have_content('Bob')
   end
@@ -13,7 +13,7 @@ RSpec.describe 'mechanic show page' do
   it "shows their years_experience" do
     mech = create(:mechanic, years_experience: 5)
 
-    visit "/mechanics/#{@mech.id}"
+    visit "/mechanics/#{mech.id}"
 
     expect(page).to have_content(5)
   end
@@ -27,7 +27,7 @@ RSpec.describe 'mechanic show page' do
     ride_mechanic = create(ride: ride_2, mechanic: mech)
     ride_mechanic = create(ride: ride_3, mechanic: mech)
 
-    visit "/mechanics/#{@mech.id}"
+    visit "/mechanics/#{mech.id}"
 
     within 'div.rides' do
       expect(page).to have_content(ride_1.name)
