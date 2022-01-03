@@ -5,4 +5,9 @@ class MechanicsController < ApplicationController
     @avg_years_exp = Mechanic.avg_years_exp
   end
 
+  def show
+    @mechanic = Mechanic.find(params[:id])
+  end
+
+
 end
