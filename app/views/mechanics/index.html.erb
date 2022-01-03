@@ -1,5 +1,5 @@
 <h1>All Mechanics</h1>
-
+<p><%= "Average Years of Experience: #{@status}" %></p>
 <% @mechanics.each do |mechanic| %>
   <div class=<% "Mechanic_#{mechanic.id}" %>>
     <h3><%= mechanic.name %></h3>

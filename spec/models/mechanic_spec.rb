@@ -8,7 +8,7 @@ RSpec.describe Mechanic, type: :model do
         mech_1 = create(:mechanic, years_experience: 15)
         mech_1 = create(:mechanic, years_experience: 13)
 
-        expect(Mechanic.avg_years_experience).to eq(12.67)
+        expect(Mechanic.avg_years_experience.round(2)).to eq(12.67)
       end
 
       it 'returns nil if no mechanics exist' do
