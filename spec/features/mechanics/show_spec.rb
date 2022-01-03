@@ -35,7 +35,6 @@ RSpec.describe 'the mechanic show page' do
     expect(page).to have_content('The Wiggler')
     expect(page).to have_content('The Jiggler')
     expect(page).to have_content("#{ride_4.name}")
-
   end
 
 end
