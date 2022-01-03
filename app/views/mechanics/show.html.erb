@@ -2,6 +2,13 @@
 
 <h2>Years of Experience: <%= @mechanic.years_experience %></h2>
 
+<h3>Add a ride to workload: </h3>
+<%=form_with url: "/mechanics/#{@mechanic.id}", method: :post, local: true do |form| %>
+  <%= form.label "Ride Id:" %>
+  <%= form.text_field :add_ride %>
+  <%= form.submit 'Submit' %>
+<% end %>
+
 <h3>Rides currently working on sorted by thrill rating:  </h3>
 <% @rides.each do |ride| %>
   <p><%= ride.name %></p>

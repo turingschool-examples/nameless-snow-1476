@@ -31,11 +31,11 @@ RSpec.describe 'mechanics' do
 
       expect(page).to have_content("Add a ride")
 
-      fill_in('ride_id', with: superman.id)
+      fill_in('add_ride', with: superman.id)
       click_on("Submit")
       expect(current_path).to eq("/mechanics/#{carol.id}")
-
+      # save_and_open_page
       expect(page).to have_content(superman.name)
-    end 
+    end
   end
 end
