@@ -10,7 +10,7 @@ RSpec.describe 'Mechanics Index Page', type: :feature do
   let!(:mechanic_2) {Mechanic.create!(name: "Meg", years_of_experience: 3, rides: [splash])}
   let!(:mechanic_3) {Mechanic.create!(name: "Bertha", years_of_experience: 6)}
 
-  it 'shows mechanics names' do
+  it 'shows mechanics names, years of expereince, and average years of experience' do
     visit '/mechanics'
 
     expect(page).to have_content('All Mechanics')
@@ -29,6 +29,4 @@ RSpec.describe 'Mechanics Index Page', type: :feature do
 
     expect(page).to have_content("Average Years of Experience: #{average_years_of_experience.round(1)}")
   end
-
-# And I see the average years of experience across all mechanics
 end
