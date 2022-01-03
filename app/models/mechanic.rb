@@ -7,6 +7,6 @@ class Mechanic < ApplicationRecord
   end
 
   def thrill_order
-    rides.order(:thrill_rating).reverse
+    rides.order(:thrill_rating)
   end
 end
