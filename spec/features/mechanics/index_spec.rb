@@ -6,6 +6,8 @@ RSpec.describe 'Mechanic Index Page' do
     @mechanic_2 = Mechanic.create!(name: 'Max Jonson', years_experience: 4)
     @mechanic_3 = Mechanic.create!(name: 'Lorinda Smith', years_experience: 13)
     @mechanic_4 = Mechanic.create!(name: 'Maria Grace', years_experience: 8)
+
+    visit mechanics_path
   end
 
   scenario 'visitor sees header for all mechanics' do
@@ -19,8 +21,8 @@ RSpec.describe 'Mechanic Index Page' do
     expect(page).to have_content(@mechanic_2.years_experience)
     expect(page).to have_content(@mechanic_3.name)
     expect(page).to have_content(@mechanic_3.years_experience)
-    expect(page).to have_content(@mechanic_4.name) 
-    expect(page).to have_content(@mechanic_4.years_experience) 
+    expect(page).to have_content(@mechanic_4.name)
+    expect(page).to have_content(@mechanic_4.years_experience)
   end
 
   scenario 'visitor sees average years of experiences across all mechanics' do
