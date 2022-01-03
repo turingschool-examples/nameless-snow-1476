@@ -9,11 +9,11 @@ RSpec.describe "Mechanic Show Page" do
 
       visit "/mechanics/#{mechanic_1.id}"
 
-      expect(page).to have_content("Name: #{mechanic_1.name}")
+      expect(page).to have_content("Mechanic: #{mechanic_1.name}")
       expect(page).to have_content("Years Experience: #{mechanic_1.years_experience}")
-      expect(page).to_not have_content("Name: #{mechanic_2.name}")
+      expect(page).to_not have_content("Mechanic: #{mechanic_2.name}")
       expect(page).to_not have_content("Years Experience: #{mechanic_2.years_experience}")
-      expect(page).to_not have_content("Name: #{mechanic_3.name}")
+      expect(page).to_not have_content("Mechanic: #{mechanic_3.name}")
       expect(page).to_not have_content("Years Experience: #{mechanic_3.years_experience}")
     end
 
@@ -35,6 +35,7 @@ RSpec.describe "Mechanic Show Page" do
 
       visit "/mechanics/#{mechanic_1.id}"
 
+      expect(page).to have_content("Current rides they're working on:")
       expect(page).to have_content("Ride Name: #{ride_1.name}")
       expect(page).to have_content("Thrill Rating: #{ride_1.thrill_rating}")
       expect(page).to have_content("Ride Name: #{ride_2.name}")
