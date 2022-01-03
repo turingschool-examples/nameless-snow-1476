@@ -6,6 +6,7 @@ RSpec.describe Mechanic do
     it { should have_many(:rides).through(:ride_mechanics) }
   end
 
+
   before :each do
   end
 
