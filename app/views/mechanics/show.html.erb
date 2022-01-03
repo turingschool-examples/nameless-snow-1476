@@ -1,0 +1,19 @@
+<h1 class= "header">Mechanic</h1>
+<div class= "mechanic">
+  <h3><%= "Name: #{@mechanic.name}, years of experience: #{@mechanic.years_experience}" %></h3>
+</div>
+<% @rides.open_and_thrilling.each do |ride| %>
+<div class= "ride-<%= ride.id %>">
+  <p><%= ride.name %></p>
+</div>
+<% end %>
+<div class = "add-ride-form">
+  <h3>Add a ride to workload</h3>
+  <%= form_with model: @mechanic_ride, local: true do |f| %>
+    <%= f.label "Ride_id_id"%>
+    <%= f.text_field :ride_id, id: :ride_id %>
+    <%= f.hidden_field :mechanic_id, value: @mechanic.id %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
