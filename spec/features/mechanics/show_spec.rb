@@ -15,14 +15,14 @@ RSpec.describe 'mechanic index page' do
   let!(:jim) {Mechanic.create!(name: "Jim Redman", years_of_experience: 35)}
 
   before :each do
-    RideMechanics.create!(ride: merry_go_round, mechanic:, teddy)
-    RideMechanics.create!(ride: coaster, mechanic:, teddy)
-    RideMechanics.create!(ride: skating_rink, mechanic:, teddy)
+    RideMechanic.create!(ride: merry_go_round, mechanic: teddy)
+    RideMechanic.create!(ride: coaster, mechanic: teddy)
+    RideMechanic.create!(ride: skating_rink, mechanic: teddy)
 
-    RideMechanics.create!(ride: bumper_cars, mechanic:, bob)
-    RideMechanics.create!(ride: coaster, mechanic:, bob)
+    RideMechanic.create!(ride: bumper_cars, mechanic: bob)
+    RideMechanic.create!(ride: coaster, mechanic: bob)
 
-    RideMechanics.create!(ride: hanuted_house, mechanic:, jim)
+    RideMechanic.create!(ride: haunted_house, mechanic: jim)
   end
 
   it 'displays a mechanics name, exp, and the names of all rides they work on' do
@@ -46,7 +46,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content(jim.years_of_experience)
   end
 
-  it 'only displays rides that are open' do
+  xit 'only displays rides that are open' do
     visit "/mechanics/#{teddy.id}"
 
     expect(page).to_not have_content(skating_rink.name)
@@ -56,7 +56,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to_not have_content(haunted_house.name)
   end
 
-  it 'displays rides in descending order of thrill rating' do
+  xit 'displays rides in descending order of thrill rating' do
     visit "/mechanics/#{teddy.id}"
 
     expect(coaster.name).to appear_before(merry_go_round.name)
