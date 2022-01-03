@@ -21,6 +21,13 @@ RSpec.describe 'Amusement Park Show Page' do
   end
 
   scenario 'visitor sees names of all rides at the park in alphabetical order' do
+    expect(@ride_3.name).to appear_before(@ride_2.name)
+    expect(@ride_3.name).to appear_before(@ride_1.name)
+    expect(@ride_3.name).to appear_before(@ride_4.name)
+    expect(@ride_2.name).to appear_before(@ride_4.name)
+    expect(@ride_2.name).to appear_before(@ride_1.name)
+    expect(@ride_4.name).to appear_before(@ride_1.name)
+    expect(@ride_1.name).to_not appear_before(@ride_4.name)
   end
 
   scenario 'visitor sees average thrill rating of park rides' do
