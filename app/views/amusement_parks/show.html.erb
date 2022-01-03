@@ -1,6 +1,6 @@
 <h1><%= @amusement_park.name %></h1>
 <h2>Admission Cost: $<%= @amusement_park.admission_cost %></h2>
 
-<% @amusement_park.rides.each do |ride| %>
+<% @amusement_park.rides.alphabetical_order.each do |ride| %>
   <%= ride.name %>
 <% end %>

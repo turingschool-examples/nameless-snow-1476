@@ -7,4 +7,8 @@ class Ride < ApplicationRecord
   def self.most_to_least_thrilling
     order(thrill_rating: :desc)
   end
+
+  def self.alphabetical_order
+    order(:name)
+  end
 end
