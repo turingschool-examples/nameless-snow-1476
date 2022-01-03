@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :mechanic do
-    name { "MyString" }
-    years_experience { 1 }
+    sequence(:name) { |n| "Default Mechanic Name #{n}" }
+    sequence(:years_experience) { |n| (n + 5) }
   end
 end
