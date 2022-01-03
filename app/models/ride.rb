@@ -5,7 +5,7 @@ class Ride < ApplicationRecord
 
   validates :name, presence: true
   validates :thrill_rating, presence: true, numericality: true
-  validates :open, presence: true, inclusion: {in: [true, false]}
+  validates :open, inclusion: {in: [true, false]}
 
 
   def self.by_thrill
