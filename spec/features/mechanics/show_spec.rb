@@ -32,6 +32,5 @@ RSpec.describe 'the mechanics show page' do
     click_on("Add")
 
     expect(page).to have_content("#{@ride_4.name}")
-    save_and_open_page
   end
 end
