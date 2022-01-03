@@ -6,4 +6,8 @@ class Ride < ApplicationRecord
   def self.open_rides
     where(open: true)
   end
+
+  def self.thrill_order
+    
+  end
 end
