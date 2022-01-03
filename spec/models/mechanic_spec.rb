@@ -37,9 +37,9 @@ RSpec.describe Mechanic do
     end
 
     it 'returns only rides that are open in descending order of thrill rating' do
-      
-      expect(teddy.only_open).to eq([merry_go_round, coaster])
-      expect(bob.only_open).to eq([bumper_cars, coaster])
+
+      expect(teddy.only_open).to eq([coaster, merry_go_round])
+      expect(bob.only_open).to eq([coaster, bumper_cars])
       expect(jim.only_open).to eq([])
     end
   end
