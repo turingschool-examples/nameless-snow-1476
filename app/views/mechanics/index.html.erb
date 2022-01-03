@@ -1,1 +1,6 @@
 <h1>All Mechanics</h1>
+<ul>
+  <% @mechanics.each do |m| %>
+    <li id="mechanic-<%= m.id %>"><%= m.name %> - years of experience: <%= m.years_experience %></li>
+  <% end %>
+</ul>
