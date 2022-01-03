@@ -9,16 +9,15 @@ RSpec.describe 'Mechanic index page' do
 
     visit '/mechanics'
     expect(page).to have_content('All Mechanics')
-    expect(page).to have_content('Mechanic 1')
-    expect(page).to have_content('Mechanic 2')
-    expect(page).to have_content('Mechanic 3')
+    expect(page).to have_content('Name: Mechanic 1')
+    expect(page).to have_content('Name: Mechanic 2')
+    expect(page).to have_content('Name: Mechanic 3')
+
     expect(page).to have_content('Years of experience: 4')
     expect(page).to have_content('Years of experience: 5')
     expect(page).to have_content('Years of experience: 6')
 
-
-    save_and_open_page
-
+    expect(page).to have_content('5.0 years')
 
   end
 
