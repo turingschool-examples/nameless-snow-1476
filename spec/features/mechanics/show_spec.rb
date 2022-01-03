@@ -46,7 +46,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content(jim.years_of_experience)
   end
 
-  xit 'only displays rides that are open' do
+  it 'only displays rides that are open' do
     visit "/mechanics/#{teddy.id}"
 
     expect(page).to_not have_content(skating_rink.name)
