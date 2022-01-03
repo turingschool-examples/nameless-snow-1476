@@ -56,7 +56,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to_not have_content(haunted_house.name)
   end
 
-  xit 'displays rides in descending order of thrill rating' do
+  it 'displays rides in descending order of thrill rating' do
     visit "/mechanics/#{teddy.id}"
 
     expect(coaster.name).to appear_before(merry_go_round.name)

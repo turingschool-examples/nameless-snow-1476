@@ -25,7 +25,7 @@ RSpec.describe Mechanic do
   end
 
   describe '#only_open' do
-    it 'returns only rides that are open' do
+    before :each do
       RideMechanic.create!(ride: merry_go_round, mechanic: teddy)
       RideMechanic.create!(ride: coaster, mechanic: teddy)
       RideMechanic.create!(ride: skating_rink, mechanic: teddy)
@@ -34,7 +34,10 @@ RSpec.describe Mechanic do
       RideMechanic.create!(ride: coaster, mechanic: bob)
 
       RideMechanic.create!(ride: haunted_house, mechanic: jim)
+    end
 
+    it 'returns only rides that are open in descending order of thrill rating' do
+      
       expect(teddy.only_open).to eq([merry_go_round, coaster])
       expect(bob.only_open).to eq([bumper_cars, coaster])
       expect(jim.only_open).to eq([])
