@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'mechanics' do
-  let!(:carol){Mechanic.create!(name: "Carol", years_experience: 12)}
+  let!(:carol){Mechanic.create!(name: "Carol Cosgrove", years_experience: 12)}
   let!(:six_flags){AmusementPark.create!(name: 'Six Flags', admission_cost: 75)}
 
   let!(:hurler){six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)}
@@ -18,11 +18,12 @@ RSpec.describe 'mechanics' do
 
       expect(page).to have_content(carol.name)
       expect(page).to have_content(carol.years_experience)
+      # save_and_open_page
       expect(page).to have_content(hurler.name)
       expect(page).to have_content(scrambler.name)
       expect(page).to_not have_content(ferris.name)
 
-      expect(hurler.name).to appear_before(scrambler.id)
+      expect(hurler.name).to appear_before(scrambler.name)
     end
   end
 end
