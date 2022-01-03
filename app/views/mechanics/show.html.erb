@@ -6,3 +6,9 @@
     <li><%= r.name %></li>
   <% end %>
 </ul>
+<h2>Add a Ride to their Workload:</h2>
+<%= form_with model: @mechanic, local: true do |f| %>
+  <%= f.label :ride_id, 'Ride ID:' %>
+  <%= f.number_field :ride_id %>
+  <%= f.submit 'Submit' %>
+<% end %>
