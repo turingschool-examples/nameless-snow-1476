@@ -39,6 +39,11 @@ RSpec.describe 'Mechanic Show Page' do
   end
 
   scenario 'visitor sees only rides that are open' do
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_2.name)
+    expect(page).to have_content(@ride_3.name)
+    expect(page).to_not have_content(@ride_4.name)
+    expect(page).to_not have_content(@ride_5.name)
   end
 
   scenario 'visitor sees rides listed by thrill rating in descending order' do
