@@ -1,2 +1,7 @@
 <p><%=  @mechanic.name%></p>
 <p><%=@mechanic.years_experience%></p>
+<% @mechanic.rides.ordered_rides.each do |ride| %>
+  <% if ride.open == true %>
+    <%= ride.name %>
+    <% end %>
+  <% end %>
