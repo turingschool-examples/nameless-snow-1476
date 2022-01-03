@@ -10,3 +10,15 @@
     <% end %>
   </ol>
 </div>
+
+<h2>Add Ride to Workload</h2>
+<%= form_with url: "/mechanic_rides/new",
+method: :post, local: true do |f| %>
+
+  <%= f.hidden_field :mechanic_id, value: "#{@mechanic.id}" %>
+
+  <%= f.label :ride_id, "Ride ID"%>
+  <%= f.text_field :ride_id %>
+
+  <%= f.submit "Submit" %>
+<% end %>
