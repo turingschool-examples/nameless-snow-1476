@@ -13,7 +13,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content("All Mechanics")
   end
 
-  it 'lists all mechanics names and years of experience' do
+  xit 'lists all mechanics names and years of experience' do
 
     visit '/mechanics'
 
@@ -25,7 +25,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content(jim.years_of_experience)
   end
 
-  it 'displays the average years of experience for all mechanics' do
+  xit 'displays the average years of experience for all mechanics' do
 
     visit '/mechanics'
 
