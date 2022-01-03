@@ -12,9 +12,9 @@ ferris = six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: f
 
 jaws = universal.rides.create!(name: 'Jaws', thrill_rating: 5, open: true)
 
-mech_1 = create(:mechanic)
-mech_2 = create(:mechanic)
+mech_1 = Mechanic.create(name: 'Bob', years_experience: 4)
+mech_2 = Mechanic.create(name: 'Terry', years_experience: 7)
 
-ride_mechanic_1 = create(:ride_mechanic, ride: hurler, mechanic: mech_1)
-ride_mechanic_2 = create(:ride_mechanic, ride: scrambler, mechanic: mech_1)
-ride_mechanic_3 = create(:ride_mechanic, ride: hurler, mechanic: mech_2)
+ride_mechanic_1 = RideMechanic.create(ride: hurler, mechanic: mech_1)
+ride_mechanic_2 = RideMechanic.create(ride: scrambler, mechanic: mech_1)
+ride_mechanic_3 = RideMechanic.create(ride: hurler, mechanic: mech_2)

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   post '/ride_mechanics', to: 'ride_mechanics#new'
 
+  get '/rides', to: 'rides#index'
+
 end
