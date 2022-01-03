@@ -4,3 +4,5 @@
 <% @amusement_park.rides.alphabetical_order.each do |ride| %>
   <%= ride.name %>
 <% end %>
+
+<p>Average Thrill Rating: <%= @amusement_park.rides.average_thrill_rating %></p>
