@@ -16,10 +16,10 @@ RSpec.describe 'Amusement Parks show page' do
     expect(page).to have_content("Rides:")
     expect(ferris.name).to appear_before(superman.name)
   end
-  xit "shows the average thrill rating of the rides" do
+  it "shows the average thrill rating of the rides" do
     visit "/amusement_parks/#{six_flags.id}"
 
     expect(page).to have_content("Average Thrill")
     expect(page).to have_content("7")
-  end 
+  end
 end
