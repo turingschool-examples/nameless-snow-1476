@@ -23,9 +23,9 @@ RSpec.describe 'mechanic show page' do
     ride_1 = create(:ride)
     ride_2 = create(:ride)
     ride_3 = create(:ride, open: false)
-    ride_mechanic = create(ride: ride_1, mechanic: mech)
-    ride_mechanic = create(ride: ride_2, mechanic: mech)
-    ride_mechanic = create(ride: ride_3, mechanic: mech)
+    ride_mechanic_1 = create(ride: ride_1, mechanic: mech)
+    ride_mechanic_2 = create(ride: ride_2, mechanic: mech)
+    ride_mechanic_3 = create(ride: ride_3, mechanic: mech)
 
     visit "/mechanics/#{mech.id}"
 

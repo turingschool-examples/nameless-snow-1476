@@ -17,4 +17,20 @@ RSpec.describe Mechanic, type: :model do
 
     end
   end
+
+  describe 'instance methods' do
+    describe 'open_rides' do
+      it "returns open rides that the mechanic is working on" do
+        mech = create(:mech)
+        ride_1 = create(:ride)
+        ride_2 = create(:ride)
+        ride_3 = create(:ride, open: false)
+        ride_mechanic_1 = create(:ride_mechanic, ride: ride_1, mechanic: mech)
+        ride_mechanic_2 = create(:ride_mechanic, ride: ride_2, mechanic: mech)
+        ride_mechanic_3 = create(:ride_mechanic, ride: ride_3, mechanic: mech)
+
+        expect(mech.open_rides).to eq([ride_1, ride_2])
+      end
+    end
+  end
 end
