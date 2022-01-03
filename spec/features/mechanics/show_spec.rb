@@ -9,6 +9,7 @@ RSpec.describe 'Mechanics Show Page' do
     @ride_1 = Ride.create!(name: 'Roller Coaster', thrill_rating: 4, open: true, amusement_park_id: @amusement_park.id)
     @ride_2 = Ride.create!(name: 'Another Ride', thrill_rating: 2, open: false, amusement_park_id: @amusement_park.id)
     @ride_3 = Ride.create!(name: 'Brand New Ride', thrill_rating: 5, open: true, amusement_park_id: @amusement_park.id)
+    @ride_4 = Ride.create!(name: 'bla bla ride', thrill_rating: 6, open: true, amusement_park_id: @amusement_park.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_1.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_2.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_3.id)
@@ -31,6 +32,13 @@ RSpec.describe 'Mechanics Show Page' do
 
   it 'displays rides they are working only if the ride is open in descending order' do
     expect(@ride_3.name).to appear_before(@ride_1.name)
+  end
+
+  it 'displays a form to add a ride' do
+    fill_in(:ride_id, with: "#{@ride_4.id}")
+    click_button('Add Ride')
+    # binding.pry
+    expect(page).to have_content("bla bla ride\nBrand New Ride\nRoller Coaster")
   end
 
 end

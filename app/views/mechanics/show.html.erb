@@ -2,5 +2,11 @@
 <p>Years Experience: <%= @mechanic.years_experience %></p>
 <h3>Rides:</h3>
 <% @mechanic.rides_by_thrill_rating.each do |ride| %>
-  <%= ride.name %>
+  <p><%= ride.name %></p>
+<% end %>
+<h3>Add A Ride:</h3>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+  <%= form.label 'Ride ID' %>
+  <%= form.number_field :ride_id %>
+  <%= form.submit 'Add Ride' %>
 <% end %>
