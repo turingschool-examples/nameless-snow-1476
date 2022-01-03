@@ -28,5 +28,6 @@ RSpec.describe 'mechanic index page' do
     visit '/mechanics'
 
     expect(page).to have_content('years experience: 12')
+  
   end
 end
