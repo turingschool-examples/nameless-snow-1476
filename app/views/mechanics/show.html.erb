@@ -4,3 +4,9 @@
 <% @open_rides.each do |ride| %>
   <%= ride.name %>
 <% end %>
+
+<%= form_with url: "/mechanics/#@mechanic1.id", method: :post, local: true do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.submit "Submit" %>
+<% end %>
