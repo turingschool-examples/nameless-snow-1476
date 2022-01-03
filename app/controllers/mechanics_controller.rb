@@ -8,4 +8,6 @@ class MechanicsController < ApplicationController
     @mechanic = Mechanic.find(params[:id])
   end
 
+  
+
 end

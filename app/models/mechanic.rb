@@ -14,4 +14,6 @@ class Mechanic < ApplicationRecord
     open_rides_maintained.order(thrill_rating: :desc)
   end
 
+  
+
 end
