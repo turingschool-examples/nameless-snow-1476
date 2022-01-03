@@ -51,7 +51,7 @@ RSpec.describe Mechanic, type: :model do
       ride_mechanic_3 = create(:ride_mechanic, ride: ride_3, mechanic: mech)
       ride_mechanic_4 = create(:ride_mechanic, ride: ride_4, mechanic: mech)
 
-      expect(Mechanic.open_rides_by_thrill).to eq([ride_2, ride_1, ride_4])
+      expect(mech.open_rides_by_thrill).to eq([ride_2, ride_1, ride_4])
     end
   end
 end
