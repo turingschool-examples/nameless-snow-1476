@@ -23,7 +23,7 @@ RSpec.describe 'the amusement park show page' do
     expect(ride_3.name).to appear_before(ride_1.name)
   end
 
-  it "shows the average thrillr ating of all rides" do
+  it "shows the average thrill rating of all rides" do
     visit "/parks/#{park_1.id}"
     expect(page).to have_content('Average Thrill: 7.7/10')
     save_and_open_page
