@@ -3,9 +3,10 @@ require 'rails_helper'
 RSpec.describe Ride do
 
   before do
-    @ride1 = Ride.create!(name: "ride1", thrill_rating: 2, open: true)
-    @ride2 = Ride.create!(name: "ride2", thrill_rating: 8, open: false)
-    @ride3 = Ride.create!(name: "ride3", thrill_rating: 6, open: true)
+    @amusement_park = AmusementPark.create!(name: "park", admission_cost: 10)
+    @ride1 = Ride.create!(name: "ride1", thrill_rating: 2, open: true, amusement_park_id: @amusement_park.id)
+    @ride2 = Ride.create!(name: "ride2", thrill_rating: 8, open: false, amusement_park_id: @amusement_park.id)
+    @ride3 = Ride.create!(name: "ride3", thrill_rating: 6, open: true, amusement_park_id: @amusement_park.id)
   end
   describe 'relationships' do
     it { should belong_to(:amusement_park) }
