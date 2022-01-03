@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'mechanic index page' do
-
   let!(:wonder_wharf) {AmusementPark.create!(name: "Wonder Wharf", admission_cost: 3)}
 
   let(:merry_go_round) {Ride.create!(name: "Happy Whale", thrill_rating: 3, open: true, amusement_park: wonder_wharf)}
