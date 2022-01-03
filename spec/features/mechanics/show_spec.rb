@@ -17,6 +17,13 @@ RSpec.describe 'mechanic show page', type: :feature do
         expect(page).to have_content(mechanic_1.name)
         expect(page).to have_content(mechanic_1.years_experience)
       end 
+
+      it 'displays current rides they are working on and are open' do
+        expect(page).to have_content(ride_1.name)
+        expect(page).to have_no_content(ride_2.name)
+        expect(page).to have_content(ride_3.name)
+        expect(page).to have_no_content(ride_4.name)
+      end
     end
   end
 end
