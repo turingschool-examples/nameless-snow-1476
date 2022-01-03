@@ -18,6 +18,7 @@ RSpec.describe 'Mechanic show page' do
     mr13 = MechanicRide.create!(mechanic_id: mechanic_1.id, ride_id: ride_3.id)
 
     visit "/mechanics/#{mechanic_1.id}"
+    save_and_open_page
     expect(page).to have_content('Mechanic name: Mechanic 1')
     expect(page).to have_content('Mechanic years of experience: 4')
 
@@ -25,8 +26,8 @@ RSpec.describe 'Mechanic show page' do
     expect(page).to have_content('Ride 2')
     expect(page).to_not have_content('Ride 3')
 
-    # how to do this?
-    #expect('Ride 2').to come_before('Ride 1')
+
+    expect('Ride 2').to appear_before('Ride 1')
 
   end
 

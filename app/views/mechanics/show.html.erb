@@ -1,7 +1,5 @@
 <p>Mechanic name: <%= @mechanic.name %> </p>
 <p>Mechanic years of experience: <%= @mechanic.years_experience %> </p>
 
-<p>Mechanic rides:</p>
-<p> <% @mechanic.rides.each do |ride| %> </p>
-<p> <%= ride.name  %> </p>
-<% end %>
+<p>Mechanic rides (open rides only - descending order by thrill rating):</p>
+<p> <%= @mechanic.ordered_rides %> </p>

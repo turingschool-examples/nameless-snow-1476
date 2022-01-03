@@ -11,7 +11,7 @@ class Mechanic < ApplicationRecord
   end
 
   def ordered_rides
-    
+    rides.where(open: :true).order(thrill_rating: :desc).pluck(:name)
   end
 
 end
