@@ -19,7 +19,7 @@ RSpec.describe 'amusement_park show page' do
     expect(page).to have_content(wonder_wharf.admission_cost)
   end
 
-  it 'displays the names of all rides in alphabetical order' do
+  xit 'displays the names of all rides in alphabetical order' do
 
     expect(bumper_cars.name).to appear_before(skating_rink.name)
     expect(skating_rink.name).to appear_before(haunted_house.name)
@@ -27,8 +27,8 @@ RSpec.describe 'amusement_park show page' do
     expect(merry_go_round.name).to appear_before(coaster.name)
   end
 
-  it 'displays an average thrill rating for all rides' do
+  xit 'displays an average thrill rating for all rides' do
 
     expect(page).to have_content("Average Thrill Rating: #{wonder_wharf.average_thrill}")
-  end 
+  end
 end
