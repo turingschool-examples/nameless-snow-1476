@@ -2,6 +2,12 @@
 <p><%=@mechanic.years_experience%></p>
 <% @mechanic.rides.ordered_rides.each do |ride| %>
   <% if ride.open == true %>
-    <%= ride.name %>
+    <p><%= ride.name %></p>
     <% end %>
+  <% end %>
+
+  <%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+  <%= form.label :ride_id %>
+  <%= form.text_area :ride_id %>
+  <%= form.submit "submit" %>
   <% end %>
