@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'Mechanic Index' do
   before do
+    @mechanic1 = Mechanic.create!(name: 'Kara Smith', years_experience: 20)
+    @mechanic2 = Mechanic.create!(name: 'Sam Jones', years_experience: 10)
     visit '/mechanics'
   end
 
@@ -24,6 +26,6 @@ describe 'display' do
   end
 
   it 'average years of experience across all mechanics' do
-    expect(page).to have_content("Average years of experience: #{average_mechanic_experience}")
+    expect(page).to have_content("Average years experience: 15")
   end
 end
