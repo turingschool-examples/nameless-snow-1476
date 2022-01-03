@@ -1,5 +1,5 @@
 class AmusementParksController < ApplicationController
   def show
-    @amuesment_park = AmusmentPark.find(params[:id])
+    @amusement_park = AmusementPark.find(params[:id])
   end
 end
