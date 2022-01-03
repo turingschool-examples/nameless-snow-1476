@@ -15,7 +15,6 @@ RSpec.describe 'Amusement Park Show Page' do
   end
 
   scenario 'visitor sees name and price for that amusement park' do
-    save_and_open_page
     expect(page).to have_content(@amusement_park_1.name)
     expect(page).to have_content(@amusement_park_1.admission_cost)
   end
