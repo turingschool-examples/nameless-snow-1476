@@ -10,4 +10,8 @@ class Mechanic < ApplicationRecord
     average(:years_experience)
   end
 
+  def ordered_rides
+    
+  end
+
 end
