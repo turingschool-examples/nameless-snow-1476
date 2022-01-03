@@ -9,11 +9,11 @@ class MechanicsController < ApplicationController
   end
 
   def update
-    mechanic = Mechanic.find(params[:id])
+    @mechanic = Mechanic.find(params[:id])
     if params[:ride_id].present?
-      MechanicRide.create(mechanic_id: mechanic.id, ride_id: params[:ride_id])
-      redirect_to action: :show
+      MechanicRide.create(mechanic_id: @mechanic.id, ride_id: params[:ride_id])
     end
+    render :show
   end
 
 end
