@@ -15,6 +15,6 @@ RSpec.describe AmusementPark do
   end
 
   it 'can sort rides alphabetically' do
-    expect(@six_flags.alphabetical).to eq([@wheel, @mind, @hurler, @scrambler])
+    expect(@six_flags.rides_alpha).to eq([@wheel, @mind, @hurler, @scrambler])
   end
 end

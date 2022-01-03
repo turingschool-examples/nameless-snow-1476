@@ -1,7 +1,7 @@
 class AmusementPark < ApplicationRecord
   has_many :rides
 
-  def alphabetical
+  def rides_alpha
     rides.order(:name)
   end
 end
