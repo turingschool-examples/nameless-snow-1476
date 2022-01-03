@@ -1,0 +1,15 @@
+<h2><%= @mechanic.name %>'s Page</h2>
+
+<p>Years of experience: <%= @mechanic.experience %></p>
+
+<h2>Working on the following rides:</h2>
+<% @rides.thrill_desc.only_open.each do |ride| %>
+  <li><%= ride.name %></li>
+<% end  %>
+
+<h2>Add a ride to workload:</h2>
+  <%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, local: true do |form| %>
+    <%= form.label :id %>
+    <%= form.text_field :id %>
+    <%= form.submit "Submit" %>
+  <% end  %>

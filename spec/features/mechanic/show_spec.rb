@@ -11,7 +11,7 @@ RSpec.describe 'mechanic show page' do
     @ride_3 = @mechanic_1.rides.create!(name: "Ride 3", thrill_rating: 3, open: false, amusement_park_id: @park_1.id)
     @ride_4 = @mechanic_1.rides.create!(name: "Ride 4", thrill_rating: 4, open: true, amusement_park_id: @park_1.id)
     @ride_1 = @mechanic_1.rides.create!(name: "Ride 1", thrill_rating: 1, open: true, amusement_park_id: @park_1.id)
-    
+
     visit "/mechanics/#{@mechanic_1.id}"
   end 
 
@@ -39,5 +39,19 @@ RSpec.describe 'mechanic show page' do
       expect(@ride_4.name).to appear_before(@ride_2.name)
       expect(@ride_2.name).to appear_before(@ride_1.name)
     end
+  end 
+
+  describe 'add a ride form' do 
+    describe 'when i visit the mechanics show page' do 
+      it 'has a form to add a ride to their workload' do
+        expect(current_path).to eq("/mechanics/#{@mechanic_1.id}")
+        expect(page).to have_content("Add a ride to workload:")
+
+        fill_in :id, with: 682
+        click_button "Submit"
+
+        expect(page).to have_content("Ride Id: 1044")
+      end  
+    end 
   end 
 end 
