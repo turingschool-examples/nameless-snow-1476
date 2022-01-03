@@ -26,5 +26,6 @@ RSpec.describe 'Mechanic Index Page' do
   end
 
   scenario 'visitor sees average years of experiences across all mechanics' do
+    expect(page).to have_content("Average years of experience: #{Mechanic.average_years}")
   end
 end
