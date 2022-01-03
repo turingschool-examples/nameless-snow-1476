@@ -31,5 +31,6 @@ RSpec.describe 'Amusement Park Show Page' do
   end
 
   scenario 'visitor sees average thrill rating of park rides' do
+    expect(page).to have_content("Average Thrill Rating of Rides: #{Ride.average_thrill}/10")
   end
 end
