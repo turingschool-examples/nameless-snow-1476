@@ -16,9 +16,11 @@ RSpec.describe Ride do
 
   describe 'class methods' do
     it 'orders rides by thrill rating' do
-      rides = Ride.all
-      
-      expect(rides.most_to_least_thrilling).to eq([coaster, splash, hot_dog])
+      expect(Ride.most_to_least_thrilling).to eq([coaster, splash, hot_dog])
+    end
+
+    it 'orders rides alphabetically by name' do
+      expect(Ride.alphabetical_order).to eq([coaster, hot_dog, splash])
     end
   end
 end
