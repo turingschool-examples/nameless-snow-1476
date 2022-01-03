@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'mechanics show page' do
+RSpec.describe 'mechanic show page' do
   let!(:park_1) {AmusementPark.create!(name: 'Six Flags', admission_cost: 50 )}
 
   let!(:ride_1) {park_1.rides.create!(name: 'The Hurler', thrill_rating: 50, open: false)}

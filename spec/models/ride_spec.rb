@@ -7,6 +7,7 @@ RSpec.describe Ride do
   let!(:ride_2) {park_1.rides.create!(name: 'The Swings', thrill_rating: 90, open: true)}
   let!(:ride_3) {park_1.rides.create!(name: 'Sea Dragon', thrill_rating: 60, open: true)}
   let!(:ride_4) {park_1.rides.create!(name: 'Haunted Mansion', thrill_rating: 100, open: true)}
+  let!(:ride_5) {park_1.rides.create!(name: 'Indiana Jones', thrill_rating: 80, open: true)}
 
   let!(:mechanic_1) {Mechanic.create!(name: "Johnny", years_experience: 10)}
   let!(:mechanic_2) {Mechanic.create!(name: "BullFrog", years_experience: 20)}
@@ -24,7 +25,15 @@ RSpec.describe Ride do
 
   describe 'class methods' do 
     it 'lists rides by thrill rating in descending order' do 
-      expect(Ride.thrill_order).to eq([ride_4, ride_2, ride_3, ride_1])
+      expect(Ride.thrill_order).to eq([ride_4, ride_2, ride_5, ride_3, ride_1])
+    end
+
+    it 'lists rides in alphabetical order' do 
+      expect(Ride.alphabetical_order).to eq([ride_4, ride_5, ride_3, ride_1, ride_2])
+    end
+
+    it 'averages thrill rating of all rides' do 
+      expect(Ride.average_thrill_rating).to eq(76)
     end
   end
 end
