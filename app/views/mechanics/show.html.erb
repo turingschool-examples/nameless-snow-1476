@@ -7,9 +7,9 @@
 <% end %>
 
 <p>Add a ride to <%= @mechanic.name %>'s workload:</p>
-<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, parmas: {ride_id: :id}, local: true do |form| %>
-  <p>Ride <%= form.label :id %>
-  <%= form.text_field :id %></p>
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, params: {id: :ride_id}, local: true do |form| %>
+  <p><%= form.label :ride_id %> Id
+  <%= form.text_field :ride_id %></p>
 
   <p><%=form.submit "Submit"%></p>
 <% end %>

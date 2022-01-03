@@ -58,12 +58,16 @@ RSpec.describe 'Mechanic Show Page' do
   scenario 'visitor sees a form to add a ride to mechanic workload' do
     expect(page).to have_content("Add a ride to #{@mechanic_1.name}'s workload:")
     expect(page).to have_button("Submit")
-    save_and_open_page
   end
 
-  scenario 'visitor fills in field with id of exisiting ride and submits' do
-  end
+  describe 'visitor fills in field with id of exisiting ride and submits' do
+    scenario 'visitor is still on mechanic show page but sees the name of new ride' do
+      fill_in(:ride_id, with: @ride_5.id)
+      click_button("Submit")
 
-  scenario 'visitor sees the name of new ride on mechanic show page' do
+      expect(current_path).to eq(mechanic_path(@mechanic_1.id))
+      expect(page).to have_content(@ride_5.name)
+      expect(@ride_5.name).to appear_before(@ride_2.name)
+    end
   end
 end
