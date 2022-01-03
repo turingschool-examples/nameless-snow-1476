@@ -26,7 +26,7 @@ RSpec.describe Mechanic, type: :model do
   describe 'instance methods' do
     describe 'open_rides' do
       it "returns open rides that the mechanic is working on" do
-        mech = create(:mech)
+        mech = create(:mechanic)
         ride_1 = create(:ride)
         ride_2 = create(:ride)
         ride_3 = create(:ride, open: false)
