@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Mechanic do
+RSpec.describe 'Mechanics Show Page' do
 
   before(:each) do
     @amusement_park = AmusementPark.create!(name: 'Elitches', admission_cost: 90)
@@ -12,23 +12,25 @@ RSpec.describe Mechanic do
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_1.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_2.id)
     MechanicRide.create!(mechanic_id: @mechanic_1.id, ride_id: @ride_3.id)
+    visit "mechanics/#{@mechanic_1.id}"
   end
 
-  describe 'relationships' do
-    it { should have_many(:mechanic_rides) }
-    it { should have_many(:rides).through(:mechanic_rides) }
+  it 'displays their attributes' do
+    expect(page).to have_content('Name: John Doe')
+    expect(page).to have_content('Years Experience: 20')
   end
 
-  describe 'self.average_experience' do
-    it 'should return the average years of experience for all mechanics' do
-      expect(Mechanic.average_experience).to eq(13)
-    end
+  it 'doesnt display attributes of other mechanics' do
+    expect(page).to_not have_content('Name: Sam')
+    expect(page).to_not have_content('Years Experience: 5')
   end
 
-  describe '#rides_by_thrill_rating' do
-    it 'should return rides by thrill rating and only list ones that are open' do
-      expect(@mechanic_1.rides_by_thrill_rating).to eq([@ride_3, @ride_1])
-    end
+  it 'doesnt display closed rides' do
+    expect(page).to_not have_content('Another Ride')
+  end
+
+  it 'displays rides they are working only if the ride is open in descending order' do
+    expect(@ride_3.name).to appear_before(@ride_1.name)
   end
 
 end
