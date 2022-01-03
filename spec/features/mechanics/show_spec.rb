@@ -73,7 +73,7 @@ RSpec.describe 'mechanic index page' do
       visit "/mechanics/#{bob.id}"
 
       within("#form-add-ride") do
-        fill_in :ride_name, with: funnel.name
+        fill_in :ride_name, with: funnel.id
         click_on "Submit"
       end
 

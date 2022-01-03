@@ -30,6 +30,5 @@ RSpec.describe 'amusement_park show page' do
   it 'displays an average thrill rating for all rides' do
 
     expect(page).to have_content("Average Thrill Rating: #{wonder_wharf.average_thrills}")
-    save_and_open_page
   end
 end
