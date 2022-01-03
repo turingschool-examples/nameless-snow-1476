@@ -10,4 +10,8 @@ class MechanicsController < ApplicationController
     end
   end
 
+  def show
+    @mechanic = Mechanic.find(params[:id])
+  end
+
 end
