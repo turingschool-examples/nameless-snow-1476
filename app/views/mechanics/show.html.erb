@@ -5,3 +5,11 @@
   <h3>Ride Name: <%= ride.name  %></h3>
   <p>Thrill Rating: <%= ride.thrill_rating %></p>
 <% end %>
+
+<h2>Add a ride to workload</h2>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, local: true do |form| %>
+<%= form.label "Ride Id" %>
+<%= form.text_field "Ride Id" %>
+<%= form.submit "Submit" %>
+<% end %>
