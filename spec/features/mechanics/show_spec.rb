@@ -28,6 +28,26 @@ RSpec.describe 'mechanic show page', type: :feature do
       it 'displays the current rides they are working on in most thrill order' do
         expect(ride_3.name).to appear_before(ride_1.name)
       end
+
+      it 'displays a form with label Ride ID:' do
+        expect(page).to have_css("label", text: 'Ride ID:')
+      end
+
+      it 'displays a submit button to add ride id' do
+        expect(page).to have_button('Submit')
+      end
+    end
+
+    describe 'clickable elements' do
+      it 'adds a ride to the working on list after submitting ride id' do
+        expect(page).to have_no_content(ride_4.name)
+
+        fill_in 'Ride ID:', with: ride_4.id
+        click_button 'Submit'
+
+        expect(page).to have_current_path(mechanic_path(mechanic_1))
+        expect(page).to have_content(ride_4.name)
+      end
     end
   end
 end
