@@ -9,4 +9,9 @@ class Mechanic < ApplicationRecord
   def open_rides
     rides.where(open: true).order(thrill_rating: :desc)
   end
+
+  def add_ride(id)
+    mechanic_id = self.id
+    RideMechanic.create!(ride_id: id, mechanic_id: self.id)
+  end
 end
