@@ -62,8 +62,5 @@ RSpec.describe 'mechanics show page' do
       expect(@ride_2.name).to appear_before(@ride_3.name)
     end
 
-    # it 'I can add an existing ride and hit submit and am taken back to the age and can see the newly added ride' do
-    #
-    # end
   end
 end
