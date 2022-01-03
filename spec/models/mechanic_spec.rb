@@ -16,7 +16,7 @@ RSpec.describe Mechanic do
 
     describe '::average_years' do
       it 'calculates the average years of experience across all mechanics' do
-        expect(self.average_years).to eq(7.5)
+        expect(Mechanic.average_years).to eq(7.5)
       end
     end
   end
