@@ -20,12 +20,20 @@ RSpec.describe 'Amusement Park Show Page', type: :feature do
 
   it 'shows park information' do
     visit "/amusement_parks/#{six_flags.id}"
-    
+
     expect(page).to have_content(six_flags.name)
     expect(page).to have_content(six_flags.admission_cost)
     expect(page).to have_content(splash.name)
     expect(page).to have_content(coaster.name)
     expect(page).to have_content(hot_dog.name)
     expect(page).to have_content(whirl.name)
+  end
+
+  it 'displays rides in alphabetical order' do
+    visit "/amusement_parks/#{six_flags.id}"
+    
+    expect("Cyclone").to appear_before("Hot Dog", only_text: true)
+    expect("Hot Dog").to appear_before("Log Ride", only_text: true)
+    expect("Log Ride").to appear_before("Whirly Dirly", only_text: true)
   end
 end
