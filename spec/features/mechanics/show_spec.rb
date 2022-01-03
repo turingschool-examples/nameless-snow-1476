@@ -13,13 +13,16 @@ RSpec.describe 'mechanics show page' do
     mech_1.rides << ride_3
     mech_1.rides << ride_4
 
-    visit "/mechanics/#{mech_1.id}"
+    visit mechanics_path(mech_1).sub('.', '/')
+
     within '.mechanic' do
       expect(page).to have_content("Name: #{mech_1.name}, years of experience: #{mech_1.years_experience}")
     end
+
     first_ride = find(".ride-#{ride_2.id}")
     second_ride = find(".ride-#{ride_1.id}")
     third_ride = find(".ride-#{ride_3.id}")
+
     expect(first_ride).to appear_before(second_ride)
     expect(second_ride).to appear_before(third_ride)
     expect(third_ride).to_not appear_before(second_ride)
@@ -36,12 +39,14 @@ RSpec.describe 'mechanics show page' do
     mech_1.rides << ride_2
     mech_1.rides << ride_3
 
-    visit "/mechanics/#{mech_1.id}"
+    visit mechanics_path(mech_1).sub('.', '/')
+
     within '.add-ride-form' do
       expect(page).to have_content('Add a ride to workload')
       fill_in 'ride_id', with: ride_4.id
       click_on('Submit')
     end
+
     expect(current_path).to eq("/mechanics/#{mech_1.id}")
     expect(page).to have_content(ride_4.name)
   end

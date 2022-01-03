@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'mechanics index page' do
   it 'has a header' do
-    visit '/mechanics'
+    visit mechanics_url
     within '.header' do
       expect(page).to have_content('All Mechanics')
     end
@@ -12,7 +12,7 @@ RSpec.describe 'mechanics index page' do
     mech_2 = Mechanic.create!(name: 'Tom_2', years_experience: 3)
     mech_3 = Mechanic.create!(name: 'Tom_3', years_experience: 2)
 
-    visit '/mechanics'
+    visit mechanics_url
     within '.mechanics' do
       expect(page).to have_content("Name: #{mech_1.name}, years of experience: #{mech_1.years_experience}")
       expect(page).to have_content("Name: #{mech_2.name}, years of experience: #{mech_2.years_experience}")
@@ -23,7 +23,7 @@ RSpec.describe 'mechanics index page' do
     mech_1 = Mechanic.create!(name: 'Tom', years_experience: 5)
     mech_2 = Mechanic.create!(name: 'Tom_2', years_experience: 3)
     mech_3 = Mechanic.create!(name: 'Tom_3', years_experience: 2)
-    visit '/mechanics'
+    visit mechanics_url
 
     within '.mechanics' do
       expect(page).to have_content("Average of combined years of experience: #{Mechanic.average_of_exp}")

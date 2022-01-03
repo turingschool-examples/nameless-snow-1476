@@ -2,9 +2,10 @@
 <div class= "mechanic">
   <h3><%= "Name: #{@mechanic.name}, years of experience: #{@mechanic.years_experience}" %></h3>
 </div>
+<ul>
 <% @rides.open_and_thrilling.each do |ride| %>
 <div class= "ride-<%= ride.id %>">
-  <p><%= ride.name %></p>
+  <li><%= ride.name %></li>
 </div>
 <% end %>
 <div class = "add-ride-form">
