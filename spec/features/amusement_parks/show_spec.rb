@@ -19,7 +19,7 @@ RSpec.describe 'amusement_park show page' do
     expect(page).to have_content(wonder_wharf.admission_cost)
   end
 
-  xit 'displays the names of all rides in alphabetical order' do
+  it 'displays the names of all rides in alphabetical order' do
 
     expect(bumper_cars.name).to appear_before(skating_rink.name)
     expect(skating_rink.name).to appear_before(haunted_house.name)
