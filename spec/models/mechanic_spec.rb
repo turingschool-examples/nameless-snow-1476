@@ -38,5 +38,11 @@ RSpec.describe Mechanic, type: :model do
         expect(mechanic_1.open_rides).to eq([ride_1, ride_3])
       end
     end
+
+    describe '#open_and_thrill_order' do
+      it 'should return rides that are open and ordered most thrill to least' do
+        expect(mechanic_1.open_and_thrill_order).to eq([ride_3, ride_1])
+      end
+    end
   end
 end
