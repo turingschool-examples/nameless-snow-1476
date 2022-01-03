@@ -4,6 +4,6 @@ class Ride < ApplicationRecord
   has_many :rides, through: :ride_mechanics
 
   def self.thrill_order 
-    
+    Ride.order(thrill_rating: :desc)
   end
 end

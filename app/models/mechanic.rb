@@ -5,4 +5,8 @@ class Mechanic < ApplicationRecord
   def self.average_experience
     Mechanic.average(:years_experience).round
   end
+
+  def add_ride(ride)
+    rides << ride
+  end
 end
