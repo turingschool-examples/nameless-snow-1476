@@ -3,3 +3,26 @@
 
 <p>Mechanic rides (open rides only - descending order by thrill rating):</p>
 <p> <%= @mechanic.ordered_rides %> </p>
+
+Add new ride to mechanic's workload:
+
+
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, local: true do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :thrill_rating %>
+  <%= f.text_field :thrill_rating %>
+
+  <%= f.label :open %>
+  <%= f.text_field :open %>
+
+  <%= binding.pry %>
+  <input type="hidden" name="amusement_park_id" value="<%= @amusement_park_id %>">
+  <input type="hidden" name="mechanic_id" value="<%= @mechanic.id %>">
+
+
+  <%= f.submit %>
+
+<% end %>
