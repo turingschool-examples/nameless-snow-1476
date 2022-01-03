@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Mechanic, type: :model do
+  describe 'associations' do
+    it {should have_many :ride_mechanics}
+    it {should have_many :rides, through: :ride_mechanics}
+  end
+
   describe 'class methods' do
     describe 'avg_years_experience' do
       it 'returns the avg_years_experience of all mechanics if mechanics exist' do
