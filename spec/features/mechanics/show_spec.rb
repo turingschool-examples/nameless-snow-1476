@@ -14,7 +14,7 @@ RSpec.describe 'mechanic show' do
 
     expect(page).to have_content(mechanic.name)
     expect(page).to have_content(mechanic.years_experience)
-    expect(page).to have_content(mechanic.rides)
+    expect(page).to have_content(mechanic.rides.name)
 
     
   end

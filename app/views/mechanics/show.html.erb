@@ -1,4 +1,7 @@
 <h2><%= @mechanic.name %></h2>
 <p><%= "#{@mechanic.years_experience} years experience" %></p>
-<p><%= "Currently working on #{@mechanic.rides}" %></p>
+<% @mechanics.each do |mechanic| %>
+  <p><%= mechanic.rides.name  %></p>
+<% end %>
+<%# <p><%"Currently working on #{@mechanic.rides.name}" %></p> %>
 
