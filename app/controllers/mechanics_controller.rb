@@ -4,4 +4,8 @@ class MechanicsController < ApplicationController
     @average_experience = Mechanic.average(:years_experience)
     # binding.pry
   end
+
+  def show
+    
+  end
 end
