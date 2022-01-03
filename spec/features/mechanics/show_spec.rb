@@ -29,14 +29,15 @@ RSpec.describe 'Mechanic Show Page' do
     expect(page).to have_content(@mechanic_1.years_experience)
     save_and_open_page
   end
-
-  scenario 'visitor sees the names of the rides mechanic is working on' do
-    expect(page).to have_content(@ride_1.name)
-    expect(page).to have_content(@ride_2.name)
-    expect(page).to have_content(@ride_3.name)
-    expect(page).to have_content(@ride_4.name)
-    expect(page).to_not have_content(@ride_5.name)
-  end
+  
+##Commented test out after writing and implementing that visitor will only see the rides that are open
+  # scenario 'visitor sees the names of the rides mechanic is working on' do
+  #   expect(page).to have_content(@ride_1.name)
+  #   expect(page).to have_content(@ride_2.name)
+  #   expect(page).to have_content(@ride_3.name)
+  #   expect(page).to have_content(@ride_4.name)
+  #   expect(page).to_not have_content(@ride_5.name)
+  # end
 
   scenario 'visitor sees only rides that are open' do
     expect(page).to have_content(@ride_1.name)
