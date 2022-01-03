@@ -1,8 +1,8 @@
 AmusementPark.destroy_all
 Ride.destroy_all
 
-six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
 universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
+six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
 
 hurler = six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
 hurler = six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
