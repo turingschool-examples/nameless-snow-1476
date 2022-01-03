@@ -8,4 +8,9 @@ class Mechanic < ApplicationRecord
   def self.avg_years
     average(:years_experience).round(2)
   end
+
+  # Instance Methods
+  def open_rides
+    rides.where(open: true)
+  end
 end
