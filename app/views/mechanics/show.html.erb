@@ -1,0 +1,12 @@
+<h1>Name: <%= @mechanic.name %></h1>
+<p>Years of Experience: <%= @mechanic.years_of_experience %></p>
+
+<div id="rides">
+  <ol>
+    <% @mechanic.rides.most_to_least_thrilling.each do |ride| %>
+      <% if ride.open == true %>
+        <li id="ride<%= ride.id %>"><%= ride.name %></li>
+      <% end %>
+    <% end %>
+  </ol>
+</div>
