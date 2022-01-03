@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Mechanic do
+ 
   describe 'Class Methods' do
     it 'calculate average years experience of all mechanics' do
 
