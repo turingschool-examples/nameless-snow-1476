@@ -6,7 +6,6 @@ RSpec.describe 'mechanic index page' do
     mechanic2 = Mechanic.find_or_create_by!(name: 'Joe', yearsxp: 10)
 
     visit "/mechanics"
-    save_and_open_page
 
     expect(page).to have_content('All Mechanics')
     expect(page).to have_content('Kara')
