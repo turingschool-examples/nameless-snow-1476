@@ -1,0 +1,6 @@
+<h1><%= @park.name %></h1>
+<h3>Admission Price: $<%= @park.admission_cost %></h3>
+<% @park.alpha_rides.each do |ride| %>
+  <%= ride.name %><br>
+<% end %><hr>
+<h3>Average Thrill Rating of Rides: <%= @park.avg_ride_thrill %>/10</h3>
