@@ -9,6 +9,8 @@ RSpec.describe 'mechanic index page' do
   let(:haunted_house) {Ride.create!(name: "Ghost Whale", thrill_rating: 7, open: false, amusement_park: wonder_wharf)}
   let(:skating_rink) {Ride.create!(name: "Frozen Whale", thrill_rating: 5, open: false, amusement_park: wonder_wharf)}
 
+  let(:funnel) {Ride.create!(name: "Fried Whale Cakes", thrill_rating: 2, open: true, amusement_park: wonder_wharf)}
+
   let!(:teddy) {Mechanic.create!(name: "Teddy Handyman", years_of_experience: 23)}
   let!(:bob) {Mechanic.create!(name: "Bob Belcher", years_of_experience: 3)}
   let!(:jim) {Mechanic.create!(name: "Jim Redman", years_of_experience: 35)}
@@ -63,5 +65,22 @@ RSpec.describe 'mechanic index page' do
     visit "/mechanics/#{bob.id}"
 
     expect(coaster.name).to appear_before(bumper_cars.name)
+  end
+
+  describe 'adding a ride to a mechanic' do
+    it 'displays a form to add a ride to a mechanics workload' do
+
+      visit "/mechanics/#{bob.id}"
+
+      within "#add-ride" do
+        fill_in :ride_name, with: funnel.name
+        click_on "Submit"
+      end
+
+      expect(current_path).to eq("/mechanics/#{bob.id}")
+      expect(page).to have_content(funnel.name)
+      expect(coaster.name).to appear_before(bumper_cars.name)
+      expect(bumper_cars.name).to appear_before(funnel.name)
+    end
   end
 end
