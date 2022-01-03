@@ -19,4 +19,11 @@ RSpec.describe AmusementPark do
       expect(wonder_wharf.rides_alpha).to eq([@bumper_cars, @haunted_house, @merry_go_round])
     end
   end
+
+  describe '#average_thrills' do
+    it 'calculates the averge thrill ratings of all rides in a park' do
+
+      expect(wonder_wharf.average_thrills).to eq(5.33)
+    end
+  end
 end
