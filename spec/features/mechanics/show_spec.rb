@@ -1,10 +1,24 @@
 require 'rails_helper'
 
 # As a user,
-# When I visit a mechanic show page
-# I see their name, years of experience, and the names of rides they’re working on
-# And I only see rides that are open
-# And the rides are listed by thrill rating in descending order (most thrills first)
+# When I go to a mechanics show page
+# I see a form to add a ride to their workload
+# When I fill in that field with an id of an existing ride and hit submit
+# I’m taken back to that mechanic's show page
+# And I see the name of that newly added ride on this mechanics show page
+#
+# Ex:
+# Mechanic: Kara Smith
+# Years of Experience: 11
+#
+# Current rides they’re working on:
+# The Frog Hopper
+# Fahrenheit
+# The Kiss Raise
+#
+# Add a ride to workload:
+# Ride Id: _pretend_this_is_a_textfield_
+# Submit
 
 RSpec.describe 'the Mechanic show page' do
   before(:each) do
@@ -14,6 +28,7 @@ RSpec.describe 'the Mechanic show page' do
     @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
     @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
     @wheel = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+    @dump = @six_flags.rides.create!(name: 'The Dump', thrill_rating: 7, open: true)
 
     @mech_1.rides << @scrambler
     @mech_1.rides << @hurler
@@ -35,5 +50,11 @@ RSpec.describe 'the Mechanic show page' do
     expect(page).to have_content(@scrambler.name)
     expect(page).to_not have_content(@wheel.name)
     expect(@hurler.name).to appear_before(@scrambler.name)
+  end
+
+  xit 'adds an existing ride to the mechanic' do
+    fill_in "ride_id", with: "#{@dump.id}"
+    click_button "Submit"
+    expect(page).to have_content(@dump.name)
   end
 end
