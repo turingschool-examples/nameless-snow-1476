@@ -1,5 +1,5 @@
 <p>name: <%= @mechanic.name %></p>
 <p>years experience: <%= @mechanic.years_experience %></p>
-<p>Rides working: <% @mechanic.rides.open_rides.each do |ride| %>
+<p>Rides working: <% @mechanic.rides.open_rides.thrill_rating.each do |ride| %>
   <%= ride.name %>
 <% end %></p>
