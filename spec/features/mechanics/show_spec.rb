@@ -27,7 +27,6 @@ RSpec.describe 'Mechanic Show Page' do
   scenario 'visitor sees mechanic name and years of experience' do
     expect(page).to have_content(@mechanic_1.name)
     expect(page).to have_content(@mechanic_1.years_experience)
-    save_and_open_page
   end
 
 ##Commented test out after writing and implementing that visitor will only see the rides that are open
@@ -54,5 +53,17 @@ RSpec.describe 'Mechanic Show Page' do
     expect(@ride_2.name).to_not appear_before(@ride_3.name)
     expect(@ride_3.name).to_not appear_before(@ride_1.name)
     expect(@ride_3.name).to appear_before(@ride_2.name)
+  end
+
+  scenario 'visitor sees a form to add a ride to mechanic workload' do
+    expect(page).to have_content("Add a ride to #{@mechanic_1.name}'s workload:")
+    expect(page).to have_button("Submit")
+    save_and_open_page
+  end
+
+  scenario 'visitor fills in field with id of exisiting ride and submits' do
+  end
+
+  scenario 'visitor sees the name of new ride on mechanic show page' do
   end
 end
