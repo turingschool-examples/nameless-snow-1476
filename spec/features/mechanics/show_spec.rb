@@ -22,17 +22,10 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
       expect(page).to have_content(coaster.name)
       expect(page).to have_no_content(hot_dog.name)
 
-      let(:most_thrilling) { "<li>#{coaster.name}</li>"}
-      let(:least_thrilling) { "<li>#{splash.name}</li>"}
+      most_thrilling = coaster.name
+      least_thrilling = splash.name
 
-      expect(most_thrilling).to appear_before(least_thrilling)
+      expect(most_thrilling).to appear_before(least_thrilling, only_text: true)
     end
   end
-  # As a user,
-  # When I visit a mechanic show page
-  # I see their name, years of experience, and the names of rides they’re working on
-  # And I only see rides that are open
-  # And the rides are listed by thrill rating in descending order (most thrills first)
-
-
 end
