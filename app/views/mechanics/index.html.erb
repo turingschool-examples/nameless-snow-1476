@@ -1,3 +1,9 @@
 <header>
 <h1>All Mechanics</h1>
 </header>
+
+<% @mechanics.each do |mechanic| %>
+
+<h2><%= mechanic.name %></h2>
+<p>Years of Experience: <%=mechanic.years_of_experience %></p>
+<%end%>

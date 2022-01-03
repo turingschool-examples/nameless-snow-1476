@@ -13,7 +13,7 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content("All Mechanics")
   end
 
-  xit 'lists all mechanics names and years of experience' do
+  it 'lists all mechanics names and years of experience' do
 
     visit '/mechanics'
 
