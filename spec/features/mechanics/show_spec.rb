@@ -34,6 +34,5 @@ RSpec.describe 'mechanic show page' do
       expect(page).to have_content(ride_2.name)
       expect(page).to_not have_content(ride_3.name)
     end
-
   end
 end
