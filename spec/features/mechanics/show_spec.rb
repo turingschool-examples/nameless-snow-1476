@@ -28,4 +28,12 @@ RSpec.describe 'Mechanic Show Page', type: :feature do
       expect(most_thrilling).to appear_before(least_thrilling, only_text: true)
     end
   end
+
+  describe 'form to add ride to mechanic workload' do
+    it 'has a form' do
+      expect(page).to have_content("Add Ride to Workload")
+      expect(page).to have_field("Ride ID")
+      expect(page).to have_button("Submit")
+    end
+  end
 end
