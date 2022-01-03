@@ -24,6 +24,10 @@ RSpec.describe 'mechanic show page', type: :feature do
         expect(page).to have_content(ride_3.name)
         expect(page).to have_no_content(ride_4.name)
       end
+
+      it 'displays the current rides they are working on in most thrill order' do
+        expect(ride_3.name).to appear_before(ride_1.name)
+      end
     end
   end
 end
