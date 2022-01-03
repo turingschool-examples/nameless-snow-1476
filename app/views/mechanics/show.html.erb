@@ -2,6 +2,6 @@
 <p>Years of Experience: <%= @mechanic.years_experience %>
 
 <p>Open Rides this Mechanic Maintains: </p>
-<% @mechanic.open_rides_maintained.each do |ride| %>
+<% @mechanic.open_rides_by_thrill.each do |ride| %>
   <p><%= ride.name %></p>
   <% end %>

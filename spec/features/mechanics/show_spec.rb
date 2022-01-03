@@ -13,10 +13,14 @@ RSpec.describe "Mechanic show page", type: :feature do
     @ride2 = @park1.rides.create!(name:"Jack Rabbit", thrill_rating:5, open: false)
     @ride3 = @park1.rides.create!(name:"Thunderbolt", thrill_rating:6, open: true)
     @ride4 = @park1.rides.create!(name:"Racer", thrill_rating:6, open: true)
+    @ride5 = @park1.rides.create!(name:"Phantom's Revenge", thrill_rating:9, open: true)
 
     @mechanic3.rides << @ride1 
     @mechanic3.rides << @ride2 
     @mechanic3.rides << @ride3
+    @mechanic3.rides << @ride5
+
+    @mechanic2.rides << @ride4
   end
 
   it "show page provides specified mechanic's details" do 
@@ -36,10 +40,15 @@ RSpec.describe "Mechanic show page", type: :feature do
     expect(page).to have_content("Thunderbolt")
 
     expect(page).to_not have_content("Jack Rabbit")
+    expect(page).to_not have_content("Racer")
   end
 
-  xit "show page lists rides this mechanic is working on by thrill rating in descending order with most thrills first" do 
+  it "show page lists rides this mechanic is working on by thrill rating in descending order with most thrills first" do 
+    visit "/mechanics/#{@mechanic3.id}"
 
+    expect("Phantom's Revenge").to appear_before("Steel Phantom")
+    expect("Steel Phantom").to appear_before("Thunderbolt")
+    expect("Phantom's Revenge").to appear_before("Thunderbolt")
   end
 
 end
