@@ -11,6 +11,7 @@ RSpec.describe 'Mechanic show page' do
     @hurler = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 5, open: true)
     @scrambler = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 7, open: true)
     @wheel = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)
+    @mind = @six_flags.rides.create!(name: 'Mind Eraser', thrill_rating: 9, open: true)
 
     @gh = MechanicRide.create!(mechanic: @greg, ride: @hurler)
     @gs = MechanicRide.create!(mechanic: @greg, ride: @scrambler)
@@ -40,5 +41,17 @@ RSpec.describe 'Mechanic show page' do
     visit "/mechanics/#{@greg.id}"
 
     expect(@scrambler.name).to appear_before(@hurler.name)
+  end
+
+  describe 'can add rides to workload' do
+    it 'has a form to add the ride by id' do
+      visit "/mechanics/#{@greg.id}"
+
+      fill_in(:ride_id, with: "#{@mind.id}")
+      click_button "Submit"
+
+      expect(current_path).to eq("/mechanics/#{@greg.id}")
+      expect(page).to have_content(@mind.name)
+    end
   end
 end
