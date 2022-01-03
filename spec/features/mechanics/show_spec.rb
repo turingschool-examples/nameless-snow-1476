@@ -9,6 +9,7 @@ RSpec.describe 'mechanics show' do
     @frank_ride2 = @frank.rides.create!(name: "ride2", thrill_rating: 5, open: false, amusement_park_id: @amusement_park.id)
     @frank_ride3 = @frank.rides.create!(name: "ride3", thrill_rating: 5, open: true, amusement_park_id: @amusement_park.id)
     @kara_ride1 = @kara.rides.create!(name: "ride4", thrill_rating: 10, open: true, amusement_park_id: @amusement_park.id)
+    @ride11 = Ride.create!(name: "ride11", thrill_rating: 10, open: true, amusement_park_id: @amusement_park.id)
   end
 
   it 'I see their name, years of experience, and the names of rides they’re working on' do
@@ -27,7 +28,27 @@ RSpec.describe 'mechanics show' do
 
   it 'the rides are listed by thrill rating in descending order (most thrills first)' do
     visit "/mechanics/#{@frank.id}"
-
     expect(@frank_ride3.name).to appear_before(@frank_ride1.name)
+  end
+
+  it 'I see a form to add a ride to their workload' do
+    visit "/mechanics/#{@frank.id}"
+    expect(page).to have_content("Add a ride to workload")
+    expect(page).to have_button("Add ride")
+    expect(page).to have_field('ride_id')
+  end
+
+  it 'I’m taken back to that mechanics show page' do
+    visit "/mechanics/#{@frank.id}"
+    fill_in "Ride id", with: "#{@ride11.id}"
+    click_button "Add ride"
+    expect(current_path).to eq("/mechanics/#{@frank.id}")
+  end
+
+  it 'I see the name of that newly added ride on this mechanics show page' do
+    visit "/mechanics/#{@frank.id}"
+    fill_in "Ride id", with: "#{@ride11.id}"
+    click_button "Add ride"
+    expect(page).to have_content("Rides working: #{@ride11.name}")
   end
 end
