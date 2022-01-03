@@ -22,5 +22,11 @@ RSpec.describe Ride do
         expect(Ride.by_thrill_desc).to eq([@ride_1, @ride_4, @ride_3, @ride_5, @ride_2])
       end
     end
+
+    describe '::by_name_abc' do
+      it 'orders rides alphabetically' do
+        expect(Ride.by_name_abc).to eq([@ride_3, @ride_2, @ride_4, @ride_1, @ride_5])
+      end
+    end
   end
 end

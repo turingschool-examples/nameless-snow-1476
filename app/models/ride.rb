@@ -6,4 +6,8 @@ class Ride < ApplicationRecord
   def self.by_thrill_desc
     all.order(thrill_rating: :desc)
   end
+
+  def self.by_name_abc
+    order(:name)
+  end
 end
