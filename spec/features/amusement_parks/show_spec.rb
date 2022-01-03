@@ -27,7 +27,7 @@ RSpec.describe 'amusement_park show page' do
     expect(@merry_go_round.name).to appear_before(@coaster.name)
   end
 
-  xit 'displays an average thrill rating for all rides' do
+  it 'displays an average thrill rating for all rides' do
 
     expect(page).to have_content("Average Thrill Rating: #{wonder_wharf.average_thrill}")
   end
