@@ -14,4 +14,19 @@ RSpec.describe 'mechanic index page' do
     expect(page).to have_content(mechanic2.years_experience)
     expect(page).to have_content(mechanic3.years_experience)
   end
+
+  it "I see average years experience for all mechanics" do
+    amusement_park1 = AmusementPark.create!(name: 'Six Flags', admission_cost: 20)
+    amusement_park2 = AmusementPark.create!(name: 'Dutch Wonderland', admission_cost: 30)
+
+
+
+    mechanic1 = Mechanic.create!(name: 'Wade', years_experience: 14)
+    mechanic2 = Mechanic.create!(name: 'brett', years_experience: 12)
+    mechanic3 = Mechanic.create!(name: 'mack', years_experience: 10)
+
+    visit '/mechanics'
+
+    expect(page).to have_content('years experience: 12')
+  end
 end
