@@ -10,9 +10,9 @@
 
 <section id='form-add-ride'>
   <h2>Add an Ride</h2>
-    <%= form_with url: "/ride_mechanics/#{@mechanic.id}?search=ride_name", method: :post, local: true do |form| %>
-    <%= form.label :ride_name %>
-    <%= form.text_field :ride_name %>
+    <%= form_with url: "/ride_mechanics/#{@mechanic.id}?search=ride_id", method: :post, local: true do |form| %>
+    <%= form.label :ride_id %>
+    <%= form.text_field :ride_id %>
     <%= form.submit "Submit" %>
   </section>
   <%end%>
