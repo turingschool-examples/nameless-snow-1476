@@ -14,6 +14,7 @@ RSpec.describe "Mechanic show page", type: :feature do
     @ride3 = @park1.rides.create!(name:"Thunderbolt", thrill_rating:6, open: true)
     @ride4 = @park1.rides.create!(name:"Racer", thrill_rating:6, open: true)
     @ride5 = @park1.rides.create!(name:"Phantom's Revenge", thrill_rating:9, open: true)
+    @ride6 = @park1.rides.create!(name:"Steel Curtain", thrill_rating:9, open: true)
 
     @mechanic3.rides << @ride1 
     @mechanic3.rides << @ride2 
@@ -51,4 +52,24 @@ RSpec.describe "Mechanic show page", type: :feature do
     expect("Phantom's Revenge").to appear_before("Thunderbolt")
   end
 
+
+  describe "has a form to add a ride to a mechanic's workload" do 
+
+    it 'renders the add form' do
+      visit "/mechanics/#{mechanic2.id}"
+
+      expect(page).to have_content("Add a ride to this mechanic's workload:")
+      expect(find('form')).to have_content('Ride ID')
+    end  
+  
+    it "form adds a ride to a mechanic's workload" do 
+      visit "/mechanics/#{mechanic2.id}"
+      
+      fill_in "Ride ID", with: "#{@ride6.id}"
+      click_button "Submit"
+
+      expect(page).to have_current_path("/mechanics/#{mechanic2.id}")
+      expect(page).to have_content("Steel Curtain")
+    end
+  end
 end
