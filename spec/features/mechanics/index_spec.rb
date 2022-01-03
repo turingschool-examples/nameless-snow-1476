@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Mechanic index page' do
   before :each do
-  @greg = Mechanic.create!(name: Greg, years_experience: 6)
-  @mary = Mechanic.create!(name: Mary, years_experience: 8)
-  @jones = Mechanic.create!(name: Jones, years_experience: 16)
-
+    @greg = Mechanic.create!(name: Greg, years_experience: 6)
+    @mary = Mechanic.create!(name: Mary, years_experience: 8)
+    @jones = Mechanic.create!(name: Jones, years_experience: 16)
+  end
+  
   it 'has a header' do
     visit '/mechanics'
 
@@ -26,6 +27,6 @@ RSpec.describe 'Mechanic index page' do
   it 'shows the average experience for all mechanics' do
     visit '/mechanics'
 
-    expect(page).to have_content(10)
+    expect(page).to have_content("Average Years of Experience: 10")
   end
 end
