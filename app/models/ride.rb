@@ -1,7 +1,13 @@
 class Ride < ApplicationRecord
-  belongs_to :amusement_park
-  has_many :mechanics, through: :mechanic_rides
   has_many :mechanic_rides, dependent: :destroy
+  has_many :mechanics, through: :mechanic_rides
+  belongs_to :amusement_park
 
-  validates_presence_of :name, :thrill_rating, :open
+  validates_presence_of :name, presence: true
+  validates_presence_of :thrill_rating, presence: true
+  validates_presence_of :open, presence: true
+
+  def self.open
+    where(open: true)
+  end
 end
