@@ -72,7 +72,7 @@ RSpec.describe 'mechanic index page' do
 
       visit "/mechanics/#{bob.id}"
 
-      within "#add-ride" do
+      within("#form-add-ride") do
         fill_in :ride_name, with: funnel.name
         click_on "Submit"
       end
@@ -81,6 +81,7 @@ RSpec.describe 'mechanic index page' do
       expect(page).to have_content(funnel.name)
       expect(coaster.name).to appear_before(bumper_cars.name)
       expect(bumper_cars.name).to appear_before(funnel.name)
+      save_and_open_page
     end
   end
 end

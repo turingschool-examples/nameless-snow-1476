@@ -7,3 +7,12 @@
 <%@mechanic.only_open.each do |ride|%>
 <p><%=ride.name%></p>
 <%end%>
+
+<section id='form-add-ride'>
+  <h2>Add an Ride</h2>
+    <%= form_with url: "/ride_mechanics/#{@mechanic.id}?search=ride_name", method: :post, local: true do |form| %>
+    <%= form.label :ride_name %>
+    <%= form.text_field :ride_name %>
+    <%= form.submit "Submit" %>
+  </section>
+  <%end%>
