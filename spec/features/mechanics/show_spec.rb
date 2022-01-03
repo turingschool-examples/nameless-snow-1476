@@ -7,6 +7,7 @@ RSpec.describe 'mechanics' do
   let!(:hurler){six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)}
   let!(:scrambler){six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)}
   let!(:ferris){six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)}
+  let!(:superman){six_flags.rides.create!(name: 'Superman', thrill_rating: 10, open: true)}
 
   let!(:mech_ride_1){MechanicsRide.create!(mechanic_id: carol.id, ride_id: hurler.id)}
   let!(:mech_ride_2){MechanicsRide.create!(mechanic_id: carol.id, ride_id: ferris.id)}
@@ -25,5 +26,16 @@ RSpec.describe 'mechanics' do
 
       expect(hurler.name).to appear_before(scrambler.name)
     end
+    it "shows a form to add another ride to the mechanic" do
+      visit "/mechanics/#{carol.id}"
+
+      expect(page).to have_content("Add a ride")
+
+      fill_in('ride_id', with: superman.id)
+      click_on("Submit")
+      expect(current_path).to eq("/mechanics/#{carol.id}")
+
+      expect(page).to have_content(superman.name)
+    end 
   end
 end
