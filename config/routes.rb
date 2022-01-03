@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get '/mechanics', to: 'mechanics#index'
   get '/mechanics/:id', to: 'mechanics#show'
 
-  post '/levels', to: 'levels/new'
+  post '/rides', to: 'rides/new'
 
 end

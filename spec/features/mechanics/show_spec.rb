@@ -67,7 +67,7 @@ RSpec.describe 'mechanic show page' do
     expect(page).to_not have_content(ride_4.name)
 
     within 'new_ride' do
-      fill_in 'Ride ID', with: ride_4.id
+      fill_in 'ride_id', with: ride_4.id
       click_button "Submit"
     end
 
