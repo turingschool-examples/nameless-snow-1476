@@ -15,7 +15,6 @@ RSpec.describe "the Mechanics index page" do
   end
 
   it "lists all mechanics ages and year of experience" do
-    save_and_open_page
     expect(page).to have_content(@mech_1.name)
     expect(page).to have_content(@mech_1.years_experience)
   end
