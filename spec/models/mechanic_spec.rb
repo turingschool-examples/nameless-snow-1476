@@ -5,4 +5,14 @@ RSpec.describe Mechanic do
     it { should validate_presence_of :names}
     it { should validate_presence_of :years}
   end
+
+  describe "class methods" do
+    it '.avg_years' do
+      karen = Mechanic.create!(names: "Karen Smith", years: 11)
+      bob = Mechanic.create!(names: "Bob Smith", years: 10)
+      max = Mechanic.create!(names: "Max Smith", years: 9)
+
+      expect(Mechanic.avg_years).to eq(10)
+    end
+  end
 end

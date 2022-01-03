@@ -16,13 +16,13 @@ RSpec.describe "Mechanics Index page" do
     expect(page).to have_content(max.years)
   end
 
-  xit "shows average years of experience" do
+  it "shows average years of experience" do
+    karen = Mechanic.create!(names: "Karen Smith", years: 11)
+    bob = Mechanic.create!(names: "Bob Smith", years: 10)
+    max = Mechanic.create!(names: "Max Smith", years: 9)
+
+    visit "/mechanics/"
+
+    expect(page).to have_content("Average Experience: 10.0 years")
   end
 end
-# Story 1 - Mechanic Index Page
-#
-# As a user,
-# When I visit the mechanics index page
-# I see a header saying “All Mechanics”
-# And I see a list of all mechanic’s names and their years of experience
-# And I see the average years of experience across all mechanics
