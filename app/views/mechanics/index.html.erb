@@ -1,0 +1,12 @@
+<h1>All Mechanics</h1>
+
+<% @mechanics.each do |mechanic| %>
+  <h3><% mechanic.name %></h3>
+  <%= link_to "#{mechanic.name}", "/mechanics/#{mechanic.id}" %>
+  <p><%= mechanic.years_experience %></p>
+  
+<% end %> 
+
+<% avg= @mechanics.sum(0.0) / @mechanics.size %>
+<h2>Average Years Experience</h2>
+<%= avg%>
