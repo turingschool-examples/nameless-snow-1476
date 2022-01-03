@@ -19,9 +19,7 @@ RSpec.describe "Mechanic Show Page" do
   it 'has the names of the rides they are working on, only if they are open; rides are listed by thrill rating in desc order' do
     mechanic_1 = Mechanic.create!(name: "Rob", years_experience: 7)
     mechanic_2 = Mechanic.create!(name: "Dana", years_experience: 15)
-    # mechanic_3 = Mechanic.create!(name: "Burt", years_experience: 20)
     six_flags = AmusementPark.create!(name: "Six Flags", admission_cost: 65)
-
     ride_1 = six_flags.rides.create!(name: "Ride 1 Name", thrill_rating: 7, open: true)
     ride_2 = six_flags.rides.create!(name: "Ride 2 Name", thrill_rating: 9, open: true)
     ride_3 = six_flags.rides.create!(name: "Ride 3 Name", thrill_rating: 3, open: false)
@@ -42,14 +40,14 @@ RSpec.describe "Mechanic Show Page" do
     expect(page).to have_content("Thrill Rating: #{ride_2.thrill_rating}")
     expect(page).to have_content("Ride Name: #{ride_4.name}")
     expect(page).to have_content("Thrill Rating: #{ride_4.thrill_rating}")
-    # expect(page).to_not have_content("Ride Name: #{ride_3.name}")
-    # expect(page).to_not have_content("Thrill Rating: #{ride_3.thrill_rating}")
+    expect(page).to_not have_content("Ride Name: #{ride_3.name}")
+    expect(page).to_not have_content("Thrill Rating: #{ride_3.thrill_rating}")
     expect(page).to_not have_content("Ride Name: #{ride_5.name}")
     expect(page).to_not have_content("Thrill Rating: #{ride_5.thrill_rating}")
-    #4,2,1
-    #expect(ride_4).to appear_before(ride_2)
-    #expect(ride_2).to appear_before(ride_1)
-    #expect(ride_1).to_not appear_before(ride_2)
-    #expect(ride_1).to appear_before(ride_4)
+
+    expect(ride_4.name).to appear_before(ride_2.name)
+    expect(ride_2.name).to appear_before(ride_1.name)
+    expect(ride_1.name).to_not appear_before(ride_2.name)
+    expect(ride_1.name).to_not appear_before(ride_4.name)
   end
 end

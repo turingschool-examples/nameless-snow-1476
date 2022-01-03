@@ -45,7 +45,7 @@ Once the time for the assessment is up, push your code to your fork and create a
 We are creating an application to track the maintenance of amusement park rides and mechanics working on those rides.
 
 * AmusementParks have a name and price of admissions attributes
-  * ex. name: 'Six Flags', admission_cost: 75 
+  * ex. name: 'Six Flags', admission_cost: 75
 * Mechanics have a name and years of experience attributes
   * ex. name: ‘Kara Smith’, years_experience: 11
 * Rides have a name, thrill rating, and open (boolean) attributes
@@ -61,7 +61,7 @@ Some of the initial migrations and model set up has been done for you.
 
 ```
 Story 1 - Mechanic Index Page
-
+[x]
 As a user,
 When I visit the mechanics index page
 I see a header saying “All Mechanics”
@@ -71,7 +71,7 @@ And I see the average years of experience across all mechanics
 
 ```
 Story 2 - Mechanic Show Page
-
+[ ]
 As a user,
 When I visit a mechanic show page
 I see their name, years of experience, and the names of rides they’re working on
@@ -81,7 +81,7 @@ And the rides are listed by thrill rating in descending order (most thrills firs
 
 ```
 Story 3 - Add a Ride to a Mechanic
-
+[ ]
 As a user,
 When I go to a mechanics show page
 I see a form to add a ride to their workload

@@ -1,7 +1,7 @@
 <h1>Name: <%= @mechanic.name %></h1>
   <p>Years Experience: <%= @mechanic.years_experience %></p>
 
-<% @mechanic.rides.each do |ride| %>
+<% @mechanic.open_rides_ordered.each do |ride| %>
   <h3>Ride Name: <%= ride.name  %></h3>
   <p>Thrill Rating: <%= ride.thrill_rating %></p>
 <% end %>
