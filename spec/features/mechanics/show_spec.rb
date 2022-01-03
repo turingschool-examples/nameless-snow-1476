@@ -42,6 +42,5 @@ RSpec.describe 'mechanic show page' do
     expect(current_path).to eq("/mechanics/#{@mechanic.id}")
     expect(page).to have_content("Twister")
     expect("Twister").to appear_before("Frog Hopper")
-    save_and_open_page
   end
 end
