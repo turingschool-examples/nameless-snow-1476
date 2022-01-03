@@ -22,18 +22,23 @@ RSpec.describe "Mechanic show page", type: :feature do
   it "show page provides specified mechanic's details" do 
     visit "/mechanics/#{@mechanic3.id}"
 
-    expect(page).to have_content("Name: Sally Smith")
+    expect(page).to have_content("Mechanic Detail Page: Sally Smith")
     expect(page).to have_content("Years of Experience: 20")
 
     expect(page).to_not have_content("Name: Bob O'Malley")
     expect(page).to_not have_content("Years of Experience: 15")
   end
 
-  xit "show page provides rides this mechanic is working on, which are open" do 
+  it "show page provides only OPEN rides this mechanic is working on" do 
+    visit "/mechanics/#{@mechanic3.id}"
 
+    expect(page).to have_content("Steel Phantom")
+    expect(page).to have_content("Thunderbolt")
+
+    expect(page).to_not have_content("Jack Rabbit")
   end
 
-  xit "show page lists rides by thrill rating in descending order with most thrills first" do 
+  xit "show page lists rides this mechanic is working on by thrill rating in descending order with most thrills first" do 
 
   end
 
