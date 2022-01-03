@@ -6,4 +6,12 @@ class Ride < ApplicationRecord
   def self.filtered
     where(open: true).order(thrill_rating: :desc)
   end
+
+  def self.average_thrill
+    average(:thrill_rating)
+  end
+
+  def self.alpha_sort
+    order(:name)
+  end 
 end

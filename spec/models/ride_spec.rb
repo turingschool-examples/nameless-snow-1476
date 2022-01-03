@@ -23,5 +23,27 @@ describe Ride do
         expect(@mechanic1.rides.filtered).to eq([@ride2, @ride1])
       end
     end
+
+    describe '::average_thrill' do
+      it 'returns average thrill rating for all rides' do
+        @park = AmusementPark.create(name: 'Hug Land', admission_cost: 1000)
+        @ride1 = @park.rides.create(name: 'Ferris Wheel', thrill_rating: 5, open: true)
+        @ride2 = @park.rides.create(name: 'Loop-D-Loop', thrill_rating: 9, open: true)
+        @ride3 = @park.rides.create(name: 'Spin-E-Thing', thrill_rating: 7, open: true)
+
+        expect(@park.rides.average_thrill).to eq(7)
+      end
+    end
+
+    describe '::alpha_sort' do
+      it 'sorts all rides alphabetically' do
+        @park = AmusementPark.create(name: 'Hug Land', admission_cost: 1000)
+        @ride1 = @park.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)
+        @ride2 = @park.rides.create!(name: 'The Curler', thrill_rating: 4, open: true)
+        @ride3 = @park.rides.create!(name: 'The Twirler', thrill_rating: 10, open: true)
+
+        expect(@park.rides.alpha_sort).to eq([@ride2, @ride1, @ride3])
+      end
+    end
   end
 end
