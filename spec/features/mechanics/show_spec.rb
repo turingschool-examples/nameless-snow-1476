@@ -28,9 +28,10 @@ RSpec.describe 'the mechanics show page' do
 
   it 'adds ride to mechanic workload' do
     visit "/mechanics/#{@mechanic_1.id}"
-    fill_in 'id', with: "#{@ride_4.id}"
+    fill_in 'ride_id', with: "#{@ride_4.id}"
     click_on("Add")
 
     expect(page).to have_content("#{@ride_4.name}")
+    save_and_open_page
   end
 end

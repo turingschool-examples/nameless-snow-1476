@@ -4,3 +4,11 @@
 <% @mechanic.open_rides_ordered.each do |ride|  %>
   <h3><%= ride.name %></h3>
 <% end %>
+
+<%= form_with url: "/ride_mechanics", method: :post, local: true do |f| %>
+  <%= f.label :ride_id %>
+  <%= f.text_field :ride_id %>
+
+  <%= f.hidden_field :mechanic_id, value: "#{@mechanic.id}" %>
+  <%= f.submit "Add"%>
+<% end %>
