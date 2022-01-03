@@ -28,7 +28,7 @@ RSpec.describe 'mechanics show page' do
   end
 
   describe 'when I visit a mechanic show page' do
-    it 'displays their name, years of experience, and the names of rides they work on' do
+    it 'displays their name and years of experience, and the names of rides they work on' do
       expect(page).to have_content(@mechanic_1.name)
       expect(page).to have_content(@mechanic_1.years_experience)
       expect(page).to have_content(@ride_1.name)
@@ -44,5 +44,21 @@ RSpec.describe 'mechanics show page' do
     it 'lists the rides by thrill rating in descending order' do
       expect(@ride_1.name).to appear_before(@ride_3.name)
     end
+
+    it 'has a form to add a ride to their workload' do
+      fill_in 'Ride Name', with: 'Speedy Thingy'
+      click_button 'Submit'
+
+      expect(page).to have_current_path("/mechanics/#{@mechanic_1}")
+      expect(page).to have_content(@mechanic_1.name)
+      expect(page).to have_content(@mechanic_1.years_experience)
+
+      expect(@ride_1.name).to appear_before(@ride_2.name)
+      expect(@ride_2.name).to appear_before(@ride_3.name)
+    end
+
+    # it 'I can add an existing ride and hit submit and am taken back to the age and can see the newly added ride' do
+    #
+    # end
   end
 end
