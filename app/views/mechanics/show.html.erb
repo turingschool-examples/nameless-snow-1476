@@ -9,7 +9,7 @@
 <% end %>
 <div class = "add-ride-form">
   <h3>Add a ride to workload</h3>
-  <%= form_with model: @mechanic_ride, local: true do |f| %>
+  <%= form_with(model: [@mechanic, @ride], local: true) do |f| %>
     <%= f.label "Ride_id_id"%>
     <%= f.text_field :ride_id, id: :ride_id %>
     <%= f.hidden_field :mechanic_id, value: @mechanic.id %>

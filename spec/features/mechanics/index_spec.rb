@@ -4,14 +4,13 @@ RSpec.describe 'mechanics index page' do
   it 'has a header' do
     visit '/mechanics'
     within '.header' do
-      expect(page).to have_content("All Mechanics")
+      expect(page).to have_content('All Mechanics')
     end
   end
   it 'lists all mechanics names and years exp' do
     mech_1 = Mechanic.create!(name: 'Tom', years_experience: 5)
     mech_2 = Mechanic.create!(name: 'Tom_2', years_experience: 3)
     mech_3 = Mechanic.create!(name: 'Tom_3', years_experience: 2)
-    # amusement_park = AmusementPark.create!(name: "Lakeside", price_of_admission: 2)
 
     visit '/mechanics'
     within '.mechanics' do
@@ -25,7 +24,7 @@ RSpec.describe 'mechanics index page' do
     mech_2 = Mechanic.create!(name: 'Tom_2', years_experience: 3)
     mech_3 = Mechanic.create!(name: 'Tom_3', years_experience: 2)
     visit '/mechanics'
-  
+
     within '.mechanics' do
       expect(page).to have_content("Average of combined years of experience: #{Mechanic.average_of_exp}")
     end
