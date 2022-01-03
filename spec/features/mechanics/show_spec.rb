@@ -14,6 +14,7 @@ RSpec.describe 'Mechanic Show Page' do
     @ride_2 = @amusement_park_1.rides.create!(name: 'Ding Dong Dock', thrill_rating: 2, open: true)
     @ride_3 = @amusement_park_1.rides.create!(name: 'Boomerang', thrill_rating: 7, open: true)
     @ride_4 = @amusement_park_1.rides.create!(name: 'Mind Eraser', thrill_rating: 8, open: false)
+    @ride_5 = @amusement_park_1.rides.create!(name: 'Woo', thrill_rating: 4, open: true)
 
     @ride_1.mechanics << @mechanic_1
     @ride_2.mechanics << @mechanic_1
@@ -30,6 +31,11 @@ RSpec.describe 'Mechanic Show Page' do
   end
 
   scenario 'visitor sees the names of the rides mechanic is working on' do
+    expect(page).to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_2.name)
+    expect(page).to have_content(@ride_3.name)
+    expect(page).to have_content(@ride_4.name)
+    expect(page).to_not have_content(@ride_5.name)
   end
 
   scenario 'visitor sees only rides that are open' do
