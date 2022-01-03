@@ -1,10 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Mechanic do
-  let!(:larry){Mechanic.create!(name: "Larry", years_experience: 9)}
-  let!(:george){Mechanic.create!(name: "George", years_experience: 3)}
-  let!(:carol){Mechanic.create!(name: "Carol", years_experience: 12)}
-
+RSpec.describe 'mechanics' do
+  let!(:carol){Mechanic.create!(name: "Carol Cosgrove", years_experience: 12)}
   let!(:six_flags){AmusementPark.create!(name: 'Six Flags', admission_cost: 75)}
 
   let!(:hurler){six_flags.rides.create!(name: 'The Hurler', thrill_rating: 7, open: true)}
@@ -15,22 +12,18 @@ RSpec.describe Mechanic do
   let!(:mech_ride_2){MechanicsRide.create!(mechanic_id: carol.id, ride_id: ferris.id)}
   let!(:mech_ride_3){MechanicsRide.create!(mechanic_id: carol.id, ride_id: scrambler.id)}
 
-  describe 'relationships' do
-    it { should have_many(:rides) }
-    it { should have_many(:mechanics_rides)}
-    it { should have_many(:rides)}
-  end
+  describe 'when a user visits the show page' do
+    it "shows the mechanic's name, years of experience, and rides currently working on" do
+      visit "/mechanics/#{carol.id}"
 
-  describe 'class methods' do
+      expect(page).to have_content(carol.name)
+      expect(page).to have_content(carol.years_experience)
+      # save_and_open_page
+      expect(page).to have_content(hurler.name)
+      expect(page).to have_content(scrambler.name)
+      expect(page).to_not have_content(ferris.name)
 
-    it '#average_years' do
-      mechs = Mechanic.all
-      expect(mechs.average_years).to eq 8
+      expect(hurler.name).to appear_before(scrambler.name)
     end
   end
-  describe 'instance methods' do
-    it '#current_rides' do
-      expect(carol.current_rides).to eq [hurler, scrambler]
-    end
-  end 
 end
