@@ -12,6 +12,6 @@ class Mechanic < ApplicationRecord
 
   def add_ride(id)
     mechanic_id = self.id
-    RideMechanic.create!(ride_id: id, mechanic_id: self.id)
+    RideMechanic.create!(ride_id: id, mechanic_id: mechanic_id)
   end
 end
