@@ -40,14 +40,14 @@ RSpec.describe 'mechanics show' do
 
   it 'I’m taken back to that mechanics show page' do
     visit "/mechanics/#{@frank.id}"
-    fill_in "Ride id", with: "#{@ride11.id}"
+    fill_in "ride_id", with: "#{@ride11.id}"
     click_button "Add ride"
     expect(current_path).to eq("/mechanics/#{@frank.id}")
   end
 
   it 'I see the name of that newly added ride on this mechanics show page' do
     visit "/mechanics/#{@frank.id}"
-    fill_in "Ride id", with: "#{@ride11.id}"
+    fill_in "ride_id", with: "#{@ride11.id}"
     click_button "Add ride"
     expect(page).to have_content("Rides working: #{@ride11.name}")
   end

@@ -3,3 +3,10 @@
 <p>Rides working: <% @mechanic.rides.open_rides.thrill_rating.each do |ride| %>
   <%= ride.name %>
 <% end %></p>
+
+<h3>Add a ride to workload</h3>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch, params: { :ride_id => ride.id, :mechanic_id => @mechanic.id } do |f| %>
+  <%= f.text_field :ride_id %>
+  <%= f.label "Ride id" %>
+  <%= f.submit "Add ride" %>
+<% end %>
