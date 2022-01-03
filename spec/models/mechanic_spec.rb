@@ -12,13 +12,16 @@ RSpec.describe Mechanic do
 
   describe 'class methods' do
     before(:each) do
-      @mechanic_1 = Mechanic.create!(name: "Robin", years_experience: 12)
-      @mechanic_2 = Mechanic.create!(name: "Daisy", years_experience: 20)
-      @mechanic_3 = Mechanic.create!(name: "Richard", years_experience: 4)
+      @six_flags = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+      @universal = AmusementPark.create!(name: 'Universal Studios', admission_cost: 80)
+
+      @ride_1 = @six_flags.rides.create!(name: 'The Hurler', thrill_rating: 10, open: true)
+      @ride_2 = @six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)
+      @ride_3 = @six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: true)
     end
 
-    it '#yoe_average' do #Years of Experience
-      expect(Mechanic.yoe_average).to eq(12)
+    it '#sort_thrill_rating' do #Years of Experience
+      expect(Ride.sort_thrill_rating).to eq([@ride_1, @ride_3, @ride_2])
     end
   end
 end

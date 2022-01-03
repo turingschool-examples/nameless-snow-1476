@@ -9,4 +9,8 @@ class Ride < ApplicationRecord
   def self.open
     where(open: true)
   end
+
+  def self.sort_thrill_rating
+    Ride.all.order(thrill_rating: :desc)
+  end
 end
