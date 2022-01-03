@@ -8,9 +8,9 @@ RSpec.describe 'mechanics' do
   let!(:scrambler){six_flags.rides.create!(name: 'The Scrambler', thrill_rating: 4, open: true)}
   let!(:ferris){six_flags.rides.create!(name: 'Ferris Wheel', thrill_rating: 7, open: false)}
 
-  let!(:mech_ride_1){MechanicRide.create!(mechanic_id: carol.id, ride_id: hurler.id)}
-  let!(:mech_ride_2){MechanicRide.create!(mechanic_id: carol.id, ride_id: ferris.id)}
-  let!(:mech_ride_3){MechanicRide.create!(mechanic_id: carol.id, ride_id: scrambler.id)}
+  let!(:mech_ride_1){MechanicsRide.create!(mechanic_id: carol.id, ride_id: hurler.id)}
+  let!(:mech_ride_2){MechanicsRide.create!(mechanic_id: carol.id, ride_id: ferris.id)}
+  let!(:mech_ride_3){MechanicsRide.create!(mechanic_id: carol.id, ride_id: scrambler.id)}
 
   describe 'when a user visits the show page' do
     it "shows the mechanic's name, years of experience, and rides currently working on" do

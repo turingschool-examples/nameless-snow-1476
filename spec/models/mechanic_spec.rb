@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Mechanic do
   describe 'relationships' do
     it { should have_many(:rides) }
+    it { should have_many(:mechanics_rides)}
+    it { should have_many(:rides)}
   end
 
   describe 'class methods' do
@@ -14,5 +16,5 @@ RSpec.describe Mechanic do
       mechs = Mechanic.all
       expect(mechs.average_years).to eq 8
     end
-  end 
+  end
 end
