@@ -3,5 +3,12 @@
 <h3>Open Work Orders: </h3><hr>
 <% @mechanic.open_rides.each do |ride| %>
   <%= ride.name %><br>
-  Thrill rating: <%= ride.thrill_rating %>
+  Thrill rating: <%= ride.thrill_rating %><br><hr>
+<% end %><br>
+
+<h3>Add Work Order:</h3>
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :get, local: true do |f| %>
+  <%= f.label "Ride ID number:" %>
+  <%= f.text_field :ride_id %>
+  <%= f.submit "Submit" %>
 <% end %>
