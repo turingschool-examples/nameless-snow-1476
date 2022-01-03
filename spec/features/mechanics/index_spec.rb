@@ -23,4 +23,4 @@ RSpec.describe 'mechanics' do
       expect(page).to have_content("8")
     end
   end
-end 
+end
