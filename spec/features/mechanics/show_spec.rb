@@ -37,8 +37,22 @@ RSpec.describe 'Mechanics Show Page' do
 
   it 'lists rides in descending order' do
     visit "/mechanics/#{@mechanic_1.id}"
-    
+
     expect(@ride_3.name).to appear_before(@ride_1.name)
     expect(@ride_1.name).to appear_before(@ride_2.name)
+  end
+
+  it 'shows a form to add a ride to their workload' do
+    ride_5 = @six_flags.rides.create!(name: 'The New Ride', thrill_rating: 8, open: true)
+    mechanic_ride_5 = @mechanic_1.mechanic_rides.create!(ride_id: ride_5.id)
+
+    visit "/mechanics/#{@mechanic_1.id}"
+
+    fill_in("Ride ID", with: "#{ride_5.id}")
+
+    click_button('Submit')
+
+    expect(current_path).to eq("/mechanics/#{@mechanic_1.id}")
+    expect(page).to have_content("The New Ride")
   end
 end
