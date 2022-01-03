@@ -5,3 +5,11 @@
 <% @mechanic.open_rides.by_thrill_desc.each do |ride| %>
   <li><%=ride.name%></li>
 <% end %>
+
+<p>Add a ride to <%= @mechanic.name %>'s workload:</p>
+<%= form_with url: "/mechanics/#{@mechanic.id}/rides", method: :post, parmas: {ride_id: :id}, local: true do |form| %>
+  <p>Ride <%= form.label :id %>
+  <%= form.text_field :id %></p>
+
+  <p><%=form.submit "Submit"%></p>
+<% end %>
