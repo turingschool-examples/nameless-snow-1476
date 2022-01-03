@@ -34,4 +34,14 @@ RSpec.describe 'mechanic show page' do
   it 'shows work orders in order of ride thrill rating, desc' do
     expect(@ride.name).to appear_before(@ride3.name)
   end
+
+  it 'can add a new ride' do
+    fill_in('ride_id', with: "#{@ride4.id}")
+    click_button('Submit')
+
+    expect(current_path).to eq("/mechanics/#{@mechanic.id}")
+    expect(page).to have_content("Twister")
+    expect("Twister").to appear_before("Frog Hopper")
+    save_and_open_page
+  end
 end
