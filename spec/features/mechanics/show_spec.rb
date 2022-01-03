@@ -15,8 +15,8 @@ RSpec.describe 'Mechanic show page' do
     @gh = MechanicRide.create!(mechanic: @greg, ride: @hurler)
     @gs = MechanicRide.create!(mechanic: @greg, ride: @scrambler)
     @gw = MechanicRide.create!(mechanic: @greg, ride: @wheel)
-    @mh = MechanicRide.create!(mechanic: @greg, ride: @hurler)
-    @js = MechanicRide.create!(mechanic: @greg, ride: @scrambler)
+    @mh = MechanicRide.create!(mechanic: @mary, ride: @hurler)
+    @js = MechanicRide.create!(mechanic: @jones, ride: @scrambler)
   end
 
   it 'shows the name, years experience, and names of rides being worked on' do
@@ -26,21 +26,19 @@ RSpec.describe 'Mechanic show page' do
     expect(page).to have_content(@greg.years_experience)
     expect(page).to have_content(@hurler.name)
     expect(page).to have_content(@scrambler.name)
-    expect(page).to have_content(@wheel.name)
-
     expect(page).to_not have_content(@mary.name)
   end
 
   it 'only shows rides that are open' do
     visit "/mechanics/#{@greg.id}"
 
-    expect(page).to have_content(@hurler)
-    expect(page).to_not have_content(@wheel)
+    expect(page).to have_content(@scrambler.name)
+    expect(page).to_not have_content(@wheel.name)
   end
 
   it 'lists the rides by most thrilling first and descending' do
     visit "/mechanics/#{@greg.id}"
 
-    expect(@scrambler).to appear_before(@hurler)
+    expect(@scrambler.name).to appear_before(@hurler.name)
   end
 end
