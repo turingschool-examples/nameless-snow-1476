@@ -35,4 +35,21 @@ RSpec.describe 'mechanic show page' do
       expect(page).to_not have_content(ride_3.name)
     end
   end
+
+  it 'shows all rides in descending order' do
+    mech = create(:mechanic)
+    ride_1 = create(:ride, thrill_rating: 10)
+    ride_2 = create(:ride, thrill_rating: 15)
+    ride_3 = create(:ride, thrill_rating: 4)
+    ride_mechanic_1 = create(:ride_mechanic, ride: ride_1, mechanic: mech)
+    ride_mechanic_2 = create(:ride_mechanic, ride: ride_2, mechanic: mech)
+    ride_mechanic_3 = create(:ride_mechanic, ride: ride_3, mechanic: mech)
+
+    visit "/mechanics/#{mech.id}"
+
+    within 'div.rides' do
+      expect(ride_2.name).to appear_before(ride_1.name)
+      expect(ride_1.name).to appear_before(ride_3.name)
+    end
+  end
 end
