@@ -4,8 +4,8 @@ class MechanicsController < ApplicationController
     @mechanics = Mechanic.all
   end
 
-  def create
-    @mechanic = Mechanic.new(mechanic_params)
+  def show
+    @mechanic = Mechanic.find(params[:id])
   end
 
   private
