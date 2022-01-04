@@ -31,7 +31,7 @@ RSpec.describe 'the mechanics show page' do
     expect(ride_4.name).to appear_before(ride_2.name)
   end
 
-  it 'lists all of the mechanics with their attributes' do
+  it 'has a field that when filled in and submitted adds a ride to workload' do
     amus_1 = AmusementPark.create!(name: "name_1", admission_cost: 75)
     mech_1 = Mechanic.create!(name: "Jon", years_experience: 12)
     mech_2 = Mechanic.create!(name: "James", years_experience: 14)
@@ -49,7 +49,7 @@ RSpec.describe 'the mechanics show page' do
     mech_1.rides << ride_4
 
     visit "/mechanics/#{mech_1.id}"
-    save_and_open_page
+    
     fill_in 'Select ride', with: "#{ride_5.id}"
     click_on ("submit")
     expect(current_path).to eq("/mechanics/#{mech_1.id}")

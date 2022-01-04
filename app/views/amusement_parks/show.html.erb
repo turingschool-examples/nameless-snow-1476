@@ -1,0 +1,9 @@
+<h1><%= @park.name %></h1>
+<p>Admissions: <%= number_to_currency(@park.admission_cost) %></p>
+
+<p>Rides: <% @park.rides_order.each do |ride| %></p>
+  <p> <%= ride.name %></p>
+<% end %>
+
+
+<p>Average Thrill Rating of Rides: <%= @park.thrill_fract %>/10</p>
