@@ -1,21 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Mechanic, type: :model do
-  describe 'relationships' do
-    it { should have_many :mechanic_rides}
-    it {should have_many(:rides).through(:mechanic_rides)}
-  end
-
-  it 'finds the average age of all mechanics' do
-    mech_1 = Mechanic.create!(name: "Jon", years_experience: 12)
-    mech_2 = Mechanic.create!(name: "James", years_experience: 14)
-    mech_3 = Mechanic.create!(name: "Sam", years_experience: 9)
-    mech_4 = Mechanic.create!(name: "Mike", years_experience: 11)
-
-    expect(Mechanic.avg_age).to eq(11.5)
-  end
-
-  it 'finds all rides a mechanic is working on that is open in descending order' do
+RSpec.describe 'the mechanics show page' do
+  it 'lists all of the mechanics with their attributes' do
     amus_1 = AmusementPark.create!(name: "name_1", admission_cost: 75)
     mech_1 = Mechanic.create!(name: "Jon", years_experience: 12)
     mech_2 = Mechanic.create!(name: "James", years_experience: 14)
@@ -31,7 +17,17 @@ RSpec.describe Mechanic, type: :model do
     mech_1.rides << ride_3
     mech_1.rides << ride_4
 
-    expect(mech_1.working_on_open_rides).to eq([ride_1, ride_4, ride_2])
+    visit "/mechanics/#{mech_1.id}"
+    expect(page).to have_content(mech_1.name)
+    expect(page).to have_content(mech_1.years_experience)
 
+    expect(page).to have_content(ride_1.name)
+    expect(page).to have_content(ride_2.name)
+    expect(page).to have_content(ride_4.name)
+    expect(page).to_not have_content(ride_3.name)
+
+
+    expect(ride_1.name).to appear_before(ride_4.name)
+    expect(ride_4.name).to appear_before(ride_2.name)
   end
 end
