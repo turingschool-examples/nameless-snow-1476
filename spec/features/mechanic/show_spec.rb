@@ -17,8 +17,8 @@ RSpec.describe 'the mechanics show page' do
 
     MechanicRide.create!(ride: @ride_1, mechanic: @mechanic_1)
     MechanicRide.create!(ride: @ride_2, mechanic: @mechanic_1)
-    MechanicRide.create!(ride: @ride_1, mechanic: @mechanic_2)
-    MechanicRide.create!(ride: @ride_2, mechanic: @mechanic_3)
+    MechanicRide.create!(ride: @ride_3, mechanic: @mechanic_1)
+    MechanicRide.create!(ride: @ride_4, mechanic: @mechanic_1)
   end
 
   it "shows a specific mechanic and their attributes " do
@@ -26,5 +26,12 @@ RSpec.describe 'the mechanics show page' do
 
     expect(page).to have_content(@mechanic_1.name)
     expect(page).to have_content(@mechanic_1.years_experience)
+  end
+
+  it "shows the rides they work on" do
+    visit "/mechanics/#{@mechanic_1.id}"
+    expect(page).not_to have_content(@ride_1.name)
+    expect(page).to have_content(@ride_2.name)
+    expect(page).to have_content(@ride_3.name)
   end
 end
