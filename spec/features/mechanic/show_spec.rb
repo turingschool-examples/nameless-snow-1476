@@ -34,4 +34,6 @@ RSpec.describe 'the mechanics show page' do
     expect(page).to have_content(@ride_2.name)
     expect(page).to have_content(@ride_3.name)
   end
+
+  
 end
